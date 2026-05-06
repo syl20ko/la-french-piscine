@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Membrane Arm&eacute;e &mdash; La French Piscine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LA FRENCH PISCINE — Service Membrane Armée
+   Premium Dark Pool Theme
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --deep-1: #0B1D2E;
+  --deep-2: #0F2B3C;
+  --deep-3: #132F42;
+  --deep-4: #1A3A50;
+  --deep-5: #0A1922;
+
+  --pool: #00A8E8;
+  --pool-light: #40C4FF;
+  --pool-glow: #00D4FF;
+  --pool-pale: rgba(0, 168, 232, 0.12);
+  --pool-dim: rgba(0, 168, 232, 0.06);
+
+  --sand: #A3927F;
+  --sand-light: #C4B8A9;
+  --sand-gold: #BFA882;
+  --sand-pale: rgba(163, 146, 127, 0.15);
+
+  --text-bright: #F0F4F8;
+  --text-medium: #B8C5D3;
+  --text-muted: #7A8C9E;
+  --text-dim: #4A5C6E;
+
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text-bright);
+  background: var(--deep-1);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--pool-light);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+a:hover { color: var(--pool-glow); }
+
+/* ============================================================
+   WATER BACKGROUND
+   ============================================================ */
+.water-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.water-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background:
+    radial-gradient(ellipse 600px 300px at 20% 50%, rgba(0, 168, 232, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 80% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 250px at 60% 80%, rgba(0, 168, 232, 0.025) 0%, transparent 60%);
+  animation: waterDrift 25s ease-in-out infinite alternate;
+}
+
+@keyframes waterDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(30px, -20px) rotate(2deg); }
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.content-wrapper { position: relative; z-index: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container--narrow { max-width: 900px; }
+
+/* ============================================================
+   NAVIGATION (identical to index)
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.5s var(--ease);
+  background: transparent;
+}
+
+.nav.scrolled {
+  background: rgba(11, 29, 46, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 rgba(0, 168, 232, 0.1);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-icon { width: 32px; height: 32px; }
+.nav-logo-icon svg { width: 100%; height: 100%; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--pool);
+  transition: width 0.4s var(--ease);
+}
+
+.nav-links a:hover { color: var(--text-bright); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-links a.active {
+  color: var(--pool-light);
+}
+.nav-links a.active::after {
+  width: 100%;
+  background: var(--pool);
+}
+
+.nav-cta {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--deep-1) !important;
+  background: var(--sand);
+  padding: 10px 22px !important;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+  transition: all 0.3s var(--ease) !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover {
+  background: var(--sand-light) !important;
+  color: var(--deep-1) !important;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-toggle span {
+  width: 24px; height: 2px;
+  background: var(--text-bright);
+  transition: all 0.3s var(--ease);
+  border-radius: 2px;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 280px; height: 100vh;
+    flex-direction: column;
+    background: rgba(11, 29, 46, 0.98);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 80px 32px 32px;
+    gap: 0;
+    transition: right 0.4s var(--ease);
+    border-left: 1px solid rgba(0, 168, 232, 0.1);
+  }
+  .nav-links.open { right: 0; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 16px 0 !important;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-cta { margin-top: 16px; text-align: center; display: block !important; }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--pool) 0%, #0090CC 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 168, 232, 0.3), 0 0 60px rgba(0, 168, 232, 0.1);
+}
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 168, 232, 0.4), 0 0 80px rgba(0, 168, 232, 0.15);
+  color: #fff;
+}
+.btn--primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease);
+}
+.btn--primary:hover::before { transform: translateX(100%); }
+
+.btn--sand {
+  background: var(--sand);
+  color: var(--deep-1);
+}
+.btn--sand:hover {
+  background: var(--sand-light);
+  transform: translateY(-2px);
+  color: var(--deep-1);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--text-bright);
+  border: 1px solid rgba(240, 244, 248, 0.2);
+}
+.btn--outline:hover {
+  border-color: var(--sand);
+  color: var(--sand-light);
+  background: rgba(163, 146, 127, 0.08);
+}
+
+.btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+.section-pad { padding: 100px 0; }
+@media (max-width: 768px) { .section-pad { padding: 64px 0; } }
+
+.section-header { text-align: center; margin-bottom: 64px; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pool);
+  margin-bottom: 16px;
+  position: relative;
+  padding: 0 16px;
+}
+.section-tag::before, .section-tag::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pool));
+}
+.section-tag::before { right: 100%; }
+.section-tag::after  { left: 100%; background: linear-gradient(90deg, var(--pool), transparent); }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: var(--text-medium);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.section-sep {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(0, 168, 232, 0.15) 20%,
+    rgba(0, 168, 232, 0.25) 50%, rgba(0, 168, 232, 0.15) 80%,
+    transparent 100%);
+  border: none;
+}
+
+/* ============================================================
+   HERO (Service page variant)
+   ============================================================ */
+.hero-service {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 140px 24px 80px;
+}
+
+.hero-service-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('../assets/images/membrane.webp') center/cover no-repeat;
+}
+
+.hero-service-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 45%, rgba(0, 168, 232, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 70%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(10, 25, 34, 0.8) 0%, rgba(11, 29, 46, 0.75) 35%, rgba(15, 43, 60, 0.8) 100%);
+}
+
+/* Animated membrane texture pattern */
+.hero-service-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 168, 232, 0.02) 40px,
+      rgba(0, 168, 232, 0.02) 41px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 168, 232, 0.015) 40px,
+      rgba(0, 168, 232, 0.015) 41px
+    );
+  animation: textureShift 20s linear infinite;
+}
+
+@keyframes textureShift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/* Floating caustic shapes */
+.hero-service .hero-caustics {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-service .caustic-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.hero-service .c1 {
+  width: 400px; height: 300px;
+  top: 15%; left: 10%;
+  background: radial-gradient(circle, rgba(0, 168, 232, 0.07) 0%, transparent 70%);
+  animation: floatSlow1 16s ease-in-out infinite;
+}
+.hero-service .c2 {
+  width: 300px; height: 400px;
+  bottom: 10%; right: 15%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+  animation: floatSlow2 20s ease-in-out infinite;
+}
+
+@keyframes floatSlow1 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+  50% { transform: translate(30px, -20px); opacity: 1; }
+}
+@keyframes floatSlow2 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.6; }
+  50% { transform: translate(-25px, 15px); opacity: 0.9; }
+}
+
+/* Surface light bar */
+.hero-service::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -50%;
+  width: 200%; height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(0, 212, 255, 0.2) 20%,
+    rgba(64, 196, 255, 0.5) 50%, rgba(0, 212, 255, 0.2) 80%,
+    transparent 100%);
+  animation: surfaceLight 8s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes surfaceLight {
+  0%, 100% { transform: translateX(-10%); opacity: 0.5; }
+  50%      { transform: translateX(10%); opacity: 1; }
+}
+
+.hero-service-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 800px;
+}
+
+.hero-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.hero-breadcrumb a { color: var(--text-muted); }
+.hero-breadcrumb a:hover { color: var(--pool-light); }
+.hero-breadcrumb svg { width: 14px; height: 14px; }
+
+.hero-service h1 {
+  font-family: var(--serif);
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-bright);
+  margin-bottom: 20px;
+}
+.hero-service h1 em {
+  font-style: italic;
+  color: var(--pool-light);
+}
+
+.hero-service-sub {
+  font-size: clamp(16px, 1.8vw, 19px);
+  color: var(--text-medium);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+/* Hero enter animations */
+.hero-enter {
+  opacity: 0;
+  transform: translateY(35px);
+  animation: heroEnter 0.9s var(--ease-out) forwards;
+}
+.hero-enter-1 { animation-delay: 0.15s; }
+.hero-enter-2 { animation-delay: 0.3s; }
+.hero-enter-3 { animation-delay: 0.45s; }
+.hero-enter-4 { animation-delay: 0.6s; }
+
+@keyframes heroEnter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   TECHNICAL DESCRIPTION
+   ============================================================ */
+.tech-section {
+  background: linear-gradient(180deg, var(--deep-1) 0%, var(--deep-2) 100%);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .tech-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.tech-visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(145deg, var(--deep-3) 0%, var(--deep-1) 100%);
+  border: 1px solid rgba(0, 168, 232, 0.1);
+}
+
+/* CSS-only membrane cross-section illustration */
+.tech-visual-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.membrane-layers {
+  width: 80%;
+  max-width: 300px;
+  position: relative;
+}
+
+.membrane-layer {
+  height: 28px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-bright);
+  overflow: hidden;
+}
+
+.membrane-layer:nth-child(1) {
+  background: linear-gradient(90deg, rgba(0, 168, 232, 0.3) 0%, rgba(0, 168, 232, 0.15) 100%);
+  border: 1px solid rgba(0, 168, 232, 0.3);
+}
+.membrane-layer:nth-child(2) {
+  background: linear-gradient(90deg, rgba(163, 146, 127, 0.3) 0%, rgba(163, 146, 127, 0.15) 100%);
+  border: 1px solid rgba(163, 146, 127, 0.25);
+  /* Polyester weave pattern */
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(163,146,127,0.15) 4px, rgba(163,146,127,0.15) 5px),
+    repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(163,146,127,0.1) 4px, rgba(163,146,127,0.1) 5px);
+}
+.membrane-layer:nth-child(3) {
+  background: linear-gradient(90deg, rgba(0, 168, 232, 0.3) 0%, rgba(0, 168, 232, 0.15) 100%);
+  border: 1px solid rgba(0, 168, 232, 0.3);
+}
+
+.membrane-label {
+  position: absolute;
+  right: -120px;
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.membrane-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: rgba(0, 168, 232, 0.3);
+}
+
+@media (max-width: 500px) {
+  .membrane-label { display: none; }
+}
+
+.membrane-total {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-medium);
+}
+.membrane-total strong {
+  color: var(--pool-light);
+  font-size: 22px;
+  font-family: var(--serif);
+}
+
+/* Dimension annotations */
+.tech-visual-dims {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.tech-visual-dims span {
+  padding: 4px 10px;
+  background: rgba(0, 168, 232, 0.08);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 168, 232, 0.1);
+}
+
+.tech-content h2 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.tech-content p {
+  font-size: 16px;
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.tech-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (max-width: 500px) {
+  .tech-specs { grid-template-columns: 1fr; }
+}
+
+.tech-spec {
+  padding: 16px;
+  background: rgba(0, 168, 232, 0.04);
+  border: 1px solid rgba(0, 168, 232, 0.08);
+  border-radius: 10px;
+}
+
+.tech-spec-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pool);
+  margin-bottom: 4px;
+}
+
+.tech-spec-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+/* ============================================================
+   ADVANTAGES
+   ============================================================ */
+.advantages {
+  background: var(--deep-1);
+}
+
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .adv-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .adv-grid { grid-template-columns: 1fr; }
+}
+
+.adv-card {
+  text-align: center;
+  padding: 40px 24px;
+  background: linear-gradient(145deg, rgba(15, 43, 60, 0.5) 0%, rgba(11, 29, 46, 0.7) 100%);
+  border: 1px solid rgba(0, 168, 232, 0.06);
+  border-radius: 16px;
+  transition: all 0.5s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.adv-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--pool), transparent);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+}
+
+.adv-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 168, 232, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.adv-card:hover::before { opacity: 1; }
+
+.adv-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--pool-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease);
+}
+
+.adv-card:hover .adv-icon {
+  background: rgba(0, 168, 232, 0.2);
+  box-shadow: 0 0 30px rgba(0, 168, 232, 0.15);
+}
+
+.adv-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--pool);
+}
+
+.adv-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+}
+
+.adv-card p {
+  font-size: 14px;
+  color: var(--text-medium);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   REALISATIONS
+   ============================================================ */
+.realisations {
+  background: linear-gradient(180deg, var(--deep-2) 0%, var(--deep-1) 100%);
+}
+
+.real-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .real-grid { grid-template-columns: 1fr; }
+}
+
+.real-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+  transition: all 0.5s var(--ease);
+}
+.real-card:hover { transform: scale(1.02); }
+
+.real-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.real-card:nth-child(1) .real-visual {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(0, 168, 232, 0.18) 0%, transparent 70%),
+    linear-gradient(135deg, #0F2B3C 0%, #1A3A50 40%, #0F2B3C 100%);
+}
+.real-card:nth-child(2) .real-visual {
+  background:
+    radial-gradient(ellipse 60% 40% at 40% 50%, rgba(64, 196, 255, 0.14) 0%, transparent 60%),
+    linear-gradient(160deg, #132F42 0%, #0B1D2E 50%, #1A3A50 100%);
+}
+.real-card:nth-child(3) .real-visual {
+  background:
+    radial-gradient(ellipse 50% 60% at 60% 40%, rgba(0, 212, 255, 0.12) 0%, transparent 60%),
+    linear-gradient(200deg, #1A3A50 0%, #0F2B3C 50%, #0B1D2E 100%);
+}
+.real-card:nth-child(4) .real-visual {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0, 168, 232, 0.16) 0%, transparent 60%),
+    linear-gradient(145deg, #0B1D2E 0%, #132F42 50%, #0F2B3C 100%);
+}
+
+.real-visual::after {
+  content: '';
+  position: absolute;
+  inset: 15%;
+  border: 1px solid rgba(0, 168, 232, 0.15);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: poolShape 15s ease-in-out infinite alternate;
+}
+
+.real-card:nth-child(2) .real-visual::after {
+  border-radius: 50%;
+  inset: 20%;
+}
+.real-card:nth-child(3) .real-visual::after {
+  border-radius: 20% 50% 50% 20% / 50% 50% 50% 50%;
+  inset: 18%;
+}
+.real-card:nth-child(4) .real-visual::after {
+  border-radius: 10%;
+  inset: 20%;
+}
+
+@keyframes poolShape {
+  0%   { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(3deg) scale(1.02); }
+}
+
+.real-overlay {
+  position: absolute;
+  inset: 0; z-index: 1;
+  background: linear-gradient(180deg,
+    transparent 30%, rgba(11, 29, 46, 0.7) 70%,
+    rgba(11, 29, 46, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+}
+
+.real-location {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pool);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.real-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+.real-desc {
+  font-size: 14px;
+  color: var(--text-medium);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PARTNERS
+   ============================================================ */
+.partners {
+  background: var(--deep-1);
+  padding: 60px 0;
+}
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.partner-item {
+  text-align: center;
+}
+.partner-logo {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease);
+  margin-bottom: 4px;
+}
+.partner-logo:hover { opacity: 1; color: var(--text-medium); }
+.partner-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .partners-row { gap: 24px 32px; }
+  .partner-logo { font-size: 14px; }
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-section {
+  background: linear-gradient(180deg, var(--deep-1) 0%, var(--deep-2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section .cta-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.contact-section .cta-glow::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 300px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(0, 168, 232, 0.06) 0%, transparent 70%);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.contact-info h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.contact-detail-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--pool-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-detail-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--pool);
+}
+
+.contact-detail-text {
+  font-size: 15px;
+  color: var(--text-bright);
+  font-weight: 500;
+}
+.contact-detail-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.contact-form-card {
+  background: linear-gradient(145deg, rgba(15, 43, 60, 0.5) 0%, rgba(11, 29, 46, 0.7) 100%);
+  border: 1px solid rgba(0, 168, 232, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+}
+
+@media (max-width: 540px) {
+  .contact-form-card { padding: 28px 20px; }
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-medium);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(11, 29, 46, 0.6);
+  border: 1px solid rgba(0, 168, 232, 0.12);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--text-bright);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-dim);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--pool);
+  box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.1);
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%237A8C9E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.form-select option {
+  background: var(--deep-1);
+  color: var(--text-bright);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--deep-5);
+  border-top: 1px solid rgba(0, 168, 232, 0.06);
+  padding: 64px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+@media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+}
+.footer-legal {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { font-size: 14px; color: var(--text-muted); }
+.footer-col a:hover { color: var(--pool-light); }
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.footer-contact-item svg { width: 16px; height: 16px; color: var(--pool); flex-shrink: 0; }
+.footer-contact-item a { color: var(--text-medium); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copy { font-size: 13px; color: var(--text-dim); }
+
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.3s var(--ease);
+}
+.footer-social a:hover { background: var(--pool-pale); color: var(--pool); }
+.footer-social svg { width: 18px; height: 18px; }
+
+/* ============================================================
+   REVEAL ANIMATIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.stagger > .reveal:nth-child(1) { transition-delay: 0.05s; }
+.stagger > .reveal:nth-child(2) { transition-delay: 0.15s; }
+.stagger > .reveal:nth-child(3) { transition-delay: 0.25s; }
+.stagger > .reveal:nth-child(4) { transition-delay: 0.35s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-service { min-height: 60vh; padding: 100px 20px 60px; }
+  .section-header { margin-bottom: 40px; }
+  .section-tag::before, .section-tag::after { width: 16px; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   DEMO RIBBON
+   ============================================================ */
+.demo-ribbon {
+  position: fixed;
+  top: 20px;
+  left: -45px;
+  z-index: 10000;
+  background: linear-gradient(135deg, #00A8E8, #40C4FF);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* ============================================================
+   REALISATION CARD IMAGES
+   ============================================================ */
+.real-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
+   PARTNER LOGO IMAGES
+   ============================================================ */
+.partner-logo-img {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease);
+}
+.partner-logo-img:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   FOOTER LOGO
+   ============================================================ */
+.footer-brand img {
+  height: 40px;
+  width: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Demo Ribbon -->
+<div class="demo-ribbon">Theme 1<br>Premium Dark Pool<br>D&eacute;monstration</div>
+
+<!-- Ambient water background -->
+<div class="water-bg"></div>
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#realisations">R&eacute;alisations</a></li>
+        <li><a href="index.html#temoignages">Avis</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="service-membrane.html" class="active">Membrane arm&eacute;e</a></li>
+        <li><a href="#contact-form" class="nav-cta">Devis gratuit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero-service">
+    <div class="hero-service-bg">
+      <div class="hero-caustics">
+        <div class="caustic-shape c1"></div>
+        <div class="caustic-shape c2"></div>
+      </div>
+    </div>
+
+    <div class="hero-service-content">
+      <div class="hero-breadcrumb hero-enter hero-enter-1">
+        <a href="index.html">Accueil</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span>Membrane arm&eacute;e</span>
+      </div>
+
+      <h1 class="hero-enter hero-enter-2">
+        <em>Membrane Arm&eacute;e</em><br>
+        La solution d&rsquo;&eacute;tanch&eacute;it&eacute; la plus r&eacute;sistante
+      </h1>
+
+      <p class="hero-service-sub hero-enter hero-enter-3">
+        Une technologie &eacute;prouv&eacute;e qui allie r&eacute;sistance, esth&eacute;tisme et long&eacute;vit&eacute;. Soud&eacute;e sur-mesure pour &eacute;pouser chaque forme de bassin.
+      </p>
+
+      <div class="hero-enter hero-enter-4" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="#contact-form" class="btn btn--primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 7l-10 7L2 7"/>
+          </svg>
+          Demander un devis
+        </a>
+        <a href="tel:0674385978" class="btn btn--outline">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          06 74 38 59 78
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TECHNICAL DESCRIPTION
+       ============================================================ -->
+  <section class="tech-section section-pad" id="technique">
+    <div class="container">
+      <div class="tech-grid">
+        <div class="tech-visual reveal">
+          <div class="tech-visual-inner">
+            <div class="membrane-layers">
+              <div class="membrane-layer">
+                R&eacute;sine PVC vierge
+                <span class="membrane-label">Couche ext&eacute;rieure</span>
+              </div>
+              <div class="membrane-layer">
+                Trame polyester arm&eacute;e
+                <span class="membrane-label">Renfort structurel</span>
+              </div>
+              <div class="membrane-layer">
+                R&eacute;sine PVC vierge
+                <span class="membrane-label">Couche int&eacute;rieure</span>
+              </div>
+            </div>
+            <div class="membrane-total">
+              &Eacute;paisseur totale<br>
+              <strong>150 &ndash; 200</strong> centi&egrave;mes
+            </div>
+          </div>
+          <div class="tech-visual-dims">
+            <span>Rouleaux 20&ndash;25m</span>
+            <span>Largeur 1.65&ndash;2m</span>
+          </div>
+        </div>
+
+        <div class="tech-content reveal reveal-delay-2">
+          <h2>Construction et composition technique</h2>
+          <p>
+            La membrane arm&eacute;e est compos&eacute;e de <strong>3 couches de r&eacute;sine PVC vierge</strong> enveloppant une trame arm&eacute;e en polyester haute t&eacute;nacit&eacute;. Cette architecture lui conf&egrave;re une r&eacute;sistance exceptionnelle &agrave; la d&eacute;chirure, aux UV et aux variations thermiques.
+          </p>
+          <p>
+            La pose est r&eacute;alis&eacute;e par <strong>soudure au fer &agrave; air chaud</strong> conform&eacute;ment &agrave; la norme T54-804, garantissant une &eacute;tanch&eacute;it&eacute; parfaite. Disponible en finitions lisses ou textur&eacute;es, elle s&rsquo;adapte &agrave; tous les styles.
+          </p>
+
+          <div class="tech-specs">
+            <div class="tech-spec">
+              <div class="tech-spec-label">&Eacute;paisseur</div>
+              <div class="tech-spec-value">150 &ndash; 200/100&egrave;mes</div>
+            </div>
+            <div class="tech-spec">
+              <div class="tech-spec-label">Norme soudure</div>
+              <div class="tech-spec-value">T54-804</div>
+            </div>
+            <div class="tech-spec">
+              <div class="tech-spec-label">Couches</div>
+              <div class="tech-spec-value">3 (PVC + polyester)</div>
+            </div>
+            <div class="tech-spec">
+              <div class="tech-spec-label">Finitions</div>
+              <div class="tech-spec-value">Lisses &amp; textur&eacute;es</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-sep">
+
+  <!-- ============================================================
+       ADVANTAGES
+       ============================================================ -->
+  <section class="advantages section-pad" id="avantages">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Pourquoi la membrane arm&eacute;e</span>
+        <h2 class="section-title">Quatre avantages d&eacute;cisifs</h2>
+      </div>
+
+      <div class="adv-grid stagger">
+        <!-- Ultra-résistante -->
+        <div class="adv-card reveal">
+          <div class="adv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Ultra-r&eacute;sistante</h3>
+          <p>Sa trame polyester arm&eacute;e r&eacute;siste aux d&eacute;chirures, aux UV et aux variations de temp&eacute;rature extr&ecirc;mes de la C&ocirc;te d&rsquo;Azur.</p>
+        </div>
+
+        <!-- Sur-mesure -->
+        <div class="adv-card reveal">
+          <div class="adv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Sur-mesure</h3>
+          <p>Soud&eacute;e directement dans votre bassin, elle &eacute;pouse parfaitement chaque forme, escalier et recoin &mdash; m&ecirc;me les plus complexes.</p>
+        </div>
+
+        <!-- Garantie 10 ans -->
+        <div class="adv-card reveal">
+          <div class="adv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3>Garantie 10 ans</h3>
+          <p>Une dur&eacute;e de vie effective de 15 &agrave; 20 ans avec un entretien adapt&eacute;. Votre investissement est prot&eacute;g&eacute; dans la dur&eacute;e.</p>
+        </div>
+
+        <!-- Esthétique premium -->
+        <div class="adv-card reveal">
+          <div class="adv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l1.45 4.46h4.69l-3.8 2.76 1.45 4.46L12 12.92l-3.8 2.76 1.46-4.46-3.8-2.76h4.7z"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+          <h3>Esth&eacute;tique premium</h3>
+          <p>Coloris exclusifs, textures 3D, imitation pierre ou mosa&iuml;que &mdash; transformez votre piscine en v&eacute;ritable oeuvre d&rsquo;art.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-sep">
+
+  <!-- ============================================================
+       REALISATIONS MEMBRANE
+       ============================================================ -->
+  <section class="realisations section-pad" id="realisations">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">R&eacute;alisations membrane</span>
+        <h2 class="section-title">Projets en membrane arm&eacute;e</h2>
+        <p class="section-subtitle">Des chantiers r&eacute;alis&eacute;s avec pr&eacute;cision dans les Alpes-Maritimes.</p>
+      </div>
+
+      <div class="real-grid stagger">
+        <!-- Menton -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_7364.webp" alt="Membrane arm&eacute;e Menton" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Menton</span>
+            <h3 class="real-title">3D Touch Prestige Renolit</h3>
+            <p class="real-desc">Finition texture pierre naturelle &mdash; rendu haut de gamme sur bassin existant</p>
+          </div>
+        </div>
+
+        <!-- Châteauneuf -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_0467.webp" alt="Membrane arm&eacute;e Ch&acirc;teauneuf" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Ch&acirc;teauneuf</span>
+            <h3 class="real-title">D&eacute;bordement + automatisation</h3>
+            <p class="real-desc">Membrane arm&eacute;e sur piscine &agrave; d&eacute;bordement avec syst&egrave;me automatis&eacute; int&eacute;gr&eacute;</p>
+          </div>
+        </div>
+
+        <!-- Peille -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_5289.webp" alt="Membrane arm&eacute;e Peille" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Peille</span>
+            <h3 class="real-title">3D Touch Elegance</h3>
+            <p class="real-desc">Finition textur&eacute;e &eacute;l&eacute;gante, parfaite int&eacute;gration avec le paysage environnant</p>
+          </div>
+        </div>
+
+        <!-- Aspremont -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_3724.webp" alt="Membrane arm&eacute;e Aspremont" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Aspremont</span>
+            <h3 class="real-title">Membrane CGT Alkor</h3>
+            <p class="real-desc">Pose sur bassin b&eacute;ton avec traitement complet de la structure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PARTNERS
+       ============================================================ -->
+  <section class="partners" id="partenaires">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 40px;">
+        <span class="section-tag">Nos partenaires membrane</span>
+      </div>
+      <div class="partners-row reveal">
+        <div class="partner-item" style="text-align:center;">
+          <img src="../assets/images/renolit.webp" alt="Renolit / Alkorplan" class="partner-logo-img" style="margin:0 auto 4px;">
+          <div class="partner-sub">Membranes premium</div>
+        </div>
+        <div class="partner-item" style="text-align:center;">
+          <img src="../assets/images/soprema.webp" alt="Soprema" class="partner-logo-img" style="margin:0 auto 4px;">
+          <div class="partner-sub">&Eacute;tanch&eacute;it&eacute;</div>
+        </div>
+        <div class="partner-item" style="text-align:center;">
+          <img src="../assets/images/cgt.webp" alt="CGT Alkor" class="partner-logo-img" style="margin:0 auto 4px;">
+          <div class="partner-sub">Fabricant PVC arm&eacute;</div>
+        </div>
+        <div class="partner-item" style="text-align:center;">
+          <img src="../assets/images/proflex.webp" alt="Proflex" class="partner-logo-img" style="margin:0 auto 4px;">
+          <div class="partner-sub">Syst&egrave;mes de fixation</div>
+        </div>
+        <div class="partner-item" style="text-align:center;">
+          <img src="../assets/images/logo-verde.png" alt="DLW Delifol" class="partner-logo-img" style="margin:0 auto 4px;">
+          <div class="partner-sub">Membranes techniques</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-sep">
+
+  <!-- ============================================================
+       CONTACT FORM
+       ============================================================ -->
+  <section class="contact-section section-pad" id="contact-form">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-tag">Votre projet</span>
+          <h2>Parlons de votre piscine</h2>
+          <p>
+            D&eacute;crivez-nous votre projet et recevez un diagnostic personnalis&eacute; gratuit.
+            Nous &eacute;tudions chaque demande avec attention pour vous proposer la solution la plus adapt&eacute;e.
+          </p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">T&eacute;l&eacute;phone</div>
+              <div class="contact-detail-text"><a href="tel:0674385978" style="color:var(--text-bright)">06 74 38 59 78</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M22 7l-10 7L2 7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-text"><a href="mailto:contact@lafrenchpiscine.fr" style="color:var(--text-bright)">contact@lafrenchpiscine.fr</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Zone d&rsquo;intervention</div>
+              <div class="contact-detail-text">Alpes-Maritimes (06)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card reveal reveal-delay-2">
+          <form id="contactForm" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Nom complet</label>
+                <input class="form-input" type="text" id="name" placeholder="Votre nom" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">T&eacute;l&eacute;phone</label>
+                <input class="form-input" type="tel" id="phone" placeholder="06 XX XX XX XX" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="project-type">Type de projet</label>
+              <select class="form-select" id="project-type">
+                <option value="" disabled selected>S&eacute;lectionnez le type de projet</option>
+                <option value="renovation">R&eacute;novation membrane arm&eacute;e</option>
+                <option value="construction">Construction neuve</option>
+                <option value="remplacement">Remplacement de liner</option>
+                <option value="fuite">R&eacute;paration fuite / &eacute;tanch&eacute;it&eacute;</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">D&eacute;crivez votre projet</label>
+              <textarea class="form-textarea" id="message" placeholder="Dimensions du bassin, type de piscine, probl&egrave;mes rencontr&eacute;s, finition souhait&eacute;e..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary form-submit">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2L11 13"/>
+                <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+              Envoyer ma demande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;"></div>
+          <p class="footer-legal">
+            CARDI PISCINES<br>
+            SIRET 89153972800016<br>
+            Expert en r&eacute;novation et &eacute;tanch&eacute;it&eacute; piscine
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="service-membrane.html">Membrane arm&eacute;e</a></li>
+            <li><a href="#">Liner</a></li>
+            <li><a href="#">Cuvelage souple</a></li>
+            <li><a href="#">Diagnostic</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html#realisations">R&eacute;alisations</a></li>
+            <li><a href="index.html#temoignages">T&eacute;moignages</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="#contact-form">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <a href="tel:0674385978">06 74 38 59 78</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M22 7l-10 7L2 7"/>
+            </svg>
+            <a href="mailto:contact@lafrenchpiscine.fr">contact@lafrenchpiscine.fr</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Alpes-Maritimes (06)
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 La French Piscine &mdash; Tous droits r&eacute;serv&eacute;s</span>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/lafrenchpiscine" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<!-- end content-wrapper -->
+
+<script>
+/* ============================================================
+   LA FRENCH PISCINE — Service Membrane JS
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // IntersectionObserver reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // Mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Form interaction feedback
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Message envoyé !';
+      btn.style.background = '#059669';
+      btn.style.boxShadow = '0 4px 20px rgba(5, 150, 105, 0.3)';
+      setTimeout(() => {
+        btn.innerHTML = '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg> Envoyer ma demande';
+        btn.style.background = '';
+        btn.style.boxShadow = '';
+      }, 3000);
+    });
+  }
+
+  // Parallax on hero caustics
+  window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    const hero = document.querySelector('.hero-service');
+    if (!hero) return;
+    const heroHeight = hero.offsetHeight;
+    if (scrollY < heroHeight) {
+      const caustics = hero.querySelector('.hero-caustics');
+      if (caustics) {
+        caustics.style.transform = `translateY(${scrollY * 0.12}px)`;
+      }
+    }
+  }, { passive: true });
+
+});
+</script>
+</body>
+</html>

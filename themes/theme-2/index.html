@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>La French Piscine — Expert Piscine Alpes-Maritimes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   LA FRENCH PISCINE — Fresh Riviera Light
+   Theme 2: Luminous, airy, premium poolside
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Core palette */
+  --white: #FFFFFF;
+  --bg: #F8FAFB;
+  --surface: #F0F5F9;
+  --surface-alt: #E8EFF5;
+  --blue: #0096D6;
+  --blue-bright: #00B4E6;
+  --blue-deep: #0078AB;
+  --blue-pale: #E6F5FB;
+  --blue-glow: rgba(0, 150, 214, 0.12);
+  --sand: #A3927F;
+  --sand-light: #D4C4B0;
+  --sand-pale: #F0EBE4;
+  --text: #1A1A2E;
+  --text-secondary: #5A6175;
+  --text-muted: #8B92A5;
+  --border: #E2E8F0;
+
+  /* Typography */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(26, 26, 46, 0.04), 0 1px 2px rgba(26, 26, 46, 0.02);
+  --shadow-md: 0 4px 16px rgba(26, 26, 46, 0.06), 0 1px 3px rgba(26, 26, 46, 0.04);
+  --shadow-lg: 0 12px 40px rgba(26, 26, 46, 0.08), 0 4px 12px rgba(26, 26, 46, 0.04);
+  --shadow-xl: 0 20px 60px rgba(26, 26, 46, 0.1), 0 8px 20px rgba(26, 26, 46, 0.05);
+  --shadow-blue: 0 8px 32px rgba(0, 150, 214, 0.2);
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: var(--font-body); }
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 var(--space-xl); }
+}
+@media (min-width: 1200px) {
+  .container { padding: 0 var(--space-2xl); }
+}
+
+/* ─── DEMO RIBBON ─── */
+.demo-ribbon {
+  position: fixed;
+  top: 20px;
+  left: -45px;
+  z-index: 10000;
+  background: linear-gradient(135deg, #0096D6, #00B4E6);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* ─── HERO BACKGROUND ─── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/piscinesun.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+/* ─── BENTO CARD IMAGE ─── */
+.bento-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* ─── PROJECT VISUAL IMAGE ─── */
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── TRUST BAR IMAGES ─── */
+.trust-item img {
+  height: 35px;
+  width: auto;
+  display: block;
+}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── NAVIGATION ─── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  transition: box-shadow 0.3s var(--ease);
+}
+.nav.scrolled {
+  box-shadow: 0 1px 20px rgba(26, 26, 46, 0.06);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 150, 214, 0.25);
+}
+.nav-logo svg { width: 22px; height: 22px; }
+.nav-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.nav-name span {
+  color: var(--blue);
+}
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s var(--ease);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  border-radius: var(--radius-full);
+  transition: width 0.3s var(--ease);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: none;
+  align-items: center;
+  gap: var(--space-md);
+}
+.nav-phone {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-phone svg { width: 16px; height: 16px; color: var(--blue); }
+.btn-nav {
+  padding: 10px 20px;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s var(--ease);
+  box-shadow: var(--shadow-sm);
+}
+.btn-nav:hover {
+  background: var(--blue-bright);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-1px);
+}
+
+/* Mobile menu button */
+.nav-mobile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+.nav-mobile-btn:hover { background: var(--surface); }
+.nav-mobile-btn svg { width: 24px; height: 24px; color: var(--text); }
+
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .nav-cta { display: flex; }
+  .nav-mobile-btn { display: none; }
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  padding: calc(72px + var(--space-4xl)) 0 var(--space-4xl);
+  background: var(--white);
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Decorative pool blob */
+.hero-blob {
+  position: absolute;
+  right: -10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(0, 180, 230, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(0, 150, 214, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 150, 214, 0.08) 0%, rgba(0, 180, 230, 0.04) 100%);
+  animation: blobFloat 20s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-blob::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+  background: radial-gradient(ellipse at 40% 40%, rgba(0, 180, 230, 0.12) 0%, transparent 70%);
+  animation: blobFloat 15s ease-in-out infinite reverse;
+}
+.hero-blob::after {
+  content: '';
+  position: absolute;
+  inset: 60px;
+  border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 150, 214, 0.18) 0%, rgba(0, 180, 230, 0.06) 50%, transparent 70%);
+  animation: blobFloat 12s ease-in-out infinite;
+}
+
+/* Water caustic pattern overlay */
+.hero-caustics {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80px 60px at 20% 80%, rgba(0, 180, 230, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 100px 80px at 80% 20%, rgba(0, 150, 214, 0.03) 0%, transparent 100%),
+    radial-gradient(ellipse 60px 40px at 50% 50%, rgba(0, 180, 230, 0.02) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(-50%) scale(1) rotate(0deg); }
+  33% { transform: translateY(-52%) scale(1.02) rotate(2deg); }
+  66% { transform: translateY(-48%) scale(0.98) rotate(-1deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 16px;
+  background: var(--blue-pale);
+  border: 1px solid rgba(0, 150, 214, 0.12);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-deep);
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.02em;
+}
+.hero-badge svg { width: 14px; height: 14px; }
+.hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-3xl);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 16px rgba(0, 150, 214, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 150, 214, 0.4);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary svg { width: 18px; height: 18px; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 16px 32px;
+  background: var(--white);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  transition: all 0.3s var(--ease);
+}
+.btn-secondary svg { width: 18px; height: 18px; color: var(--blue); }
+.btn-secondary:hover {
+  border-color: var(--blue);
+  background: var(--blue-pale);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── TRUST BAR ─── */
+.trust {
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.trust-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg) var(--space-xl);
+}
+.trust-item {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s var(--ease);
+}
+.trust-item:hover { color: var(--text-secondary); }
+.trust-sep {
+  width: 4px;
+  height: 4px;
+  background: var(--sand-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .trust-inner { gap: var(--space-lg) var(--space-2xl); }
+  .trust-item { font-size: 15px; }
+}
+
+/* ─── SECTION UTILITIES ─── */
+.section {
+  padding: var(--space-4xl) 0;
+}
+.section-alt {
+  background: var(--bg);
+}
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-md);
+}
+.section-label::before,
+.section-label::after {
+  content: '';
+  width: 20px;
+  height: 1.5px;
+  background: var(--blue);
+  opacity: 0.4;
+  border-radius: 1px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.section-desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: var(--space-md) auto 0;
+  line-height: 1.7;
+}
+
+/* ─── BENTO SERVICES GRID ─── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: var(--space-lg);
+  }
+}
+
+.bento-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.bento-card:hover {
+  border-color: rgba(0, 150, 214, 0.2);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.bento-card:hover::before { opacity: 1; }
+
+.bento-card--main {
+  padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+}
+@media (min-width: 768px) {
+  .bento-card--main { padding: var(--space-2xl); }
+}
+
+.bento-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  transition: transform 0.4s var(--ease-spring);
+}
+.bento-card:hover .bento-icon { transform: scale(1.08) rotate(-2deg); }
+
+.bento-icon--blue {
+  background: linear-gradient(135deg, var(--blue-pale), rgba(0, 180, 230, 0.12));
+}
+.bento-icon--sand {
+  background: linear-gradient(135deg, var(--sand-pale), rgba(163, 146, 127, 0.12));
+}
+.bento-icon--surface {
+  background: var(--surface);
+}
+.bento-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.bento-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+.bento-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.bento-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-md);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue);
+  transition: gap 0.3s var(--ease);
+}
+.bento-link:hover { gap: 10px; }
+.bento-link svg { width: 16px; height: 16px; }
+
+/* ─── PROJECTS / REALISATIONS ─── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+@media (min-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+  position: relative;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: transparent;
+}
+
+.project-visual {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+}
+.project-visual--menton {
+  background: linear-gradient(135deg, #0096D6 0%, #00B4E6 40%, #7DD3FC 100%);
+}
+.project-visual--grasse {
+  background: linear-gradient(135deg, #0078AB 0%, #0096D6 50%, #38BDF8 100%);
+}
+.project-visual--antibes {
+  background: linear-gradient(135deg, #00B4E6 0%, #0096D6 60%, #0078AB 100%);
+}
+.project-visual--peille {
+  background: linear-gradient(135deg, #A3927F 0%, #D4C4B0 50%, #0096D6 100%);
+}
+
+/* Pool shape SVG overlays */
+.project-visual svg {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  opacity: 0.2;
+  width: 160px;
+  height: 160px;
+  transition: all 0.4s var(--ease);
+}
+.project-card:hover .project-visual svg {
+  opacity: 0.35;
+  transform: scale(1.05);
+}
+
+/* Water shimmer */
+.project-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255,255,255,0.15) 45%,
+    transparent 55%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease);
+}
+.project-card:hover .project-visual::after {
+  transform: translateX(100%);
+}
+
+.project-body {
+  padding: var(--space-lg);
+}
+.project-city {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.project-type {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-sm);
+}
+.project-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── STATS / CHIFFRES CLES ─── */
+.stats {
+  background: linear-gradient(135deg, var(--text) 0%, #2A2A4A 100%);
+  padding: var(--space-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+.stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 400px 300px at 20% 50%, rgba(0, 150, 214, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 300px 300px at 80% 50%, rgba(0, 180, 230, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--space-xl);
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--blue-bright) 0%, #7DD3FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+.stat-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.01em;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-track {
+  display: flex;
+  gap: var(--space-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-sm) 0 var(--space-lg);
+  scrollbar-width: none;
+}
+.testimonials-track::-webkit-scrollbar { display: none; }
+
+.testimonial-card {
+  min-width: 320px;
+  max-width: 400px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  position: relative;
+  transition: all 0.3s var(--ease);
+}
+.testimonial-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: var(--space-md);
+}
+.testimonial-stars svg {
+  width: 18px;
+  height: 18px;
+  color: #FBBF24;
+}
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+  font-style: italic;
+}
+.testimonial-text::before {
+  content: '\201C';
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 0;
+  vertical-align: -16px;
+  color: var(--blue);
+  opacity: 0.3;
+  margin-right: 4px;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-pale), var(--surface));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--blue);
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+.testimonial-role {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.testimonials-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+.testimonials-dots button {
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.3s var(--ease);
+  padding: 0;
+}
+.testimonials-dots button.active {
+  background: var(--blue);
+  width: 24px;
+  border-radius: var(--radius-full);
+}
+
+/* ─── FAQ ACCORDION ─── */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s var(--ease);
+}
+.faq-item:hover {
+  border-color: rgba(0, 150, 214, 0.2);
+}
+.faq-item.active {
+  border-color: var(--blue);
+  box-shadow: 0 4px 20px rgba(0, 150, 214, 0.08);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-lg) var(--space-xl);
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  gap: var(--space-md);
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--blue); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+}
+.faq-item.active .faq-icon {
+  background: var(--blue);
+  transform: rotate(45deg);
+}
+.faq-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+.faq-item.active .faq-icon svg { color: var(--white); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
+}
+.faq-answer-inner {
+  padding: 0 var(--space-xl) var(--space-xl);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.faq-item.active .faq-answer {
+  max-height: 400px;
+}
+
+/* ─── CTA FINAL ─── */
+.cta-final {
+  padding: var(--space-4xl) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+.cta-final::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 150, 214, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-final-content {
+  position: relative;
+  z-index: 1;
+}
+.cta-final h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+}
+.cta-final p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+.cta-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--text);
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+@media (min-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+.footer-brand-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+}
+.footer-brand-name span { color: var(--blue-bright); }
+.footer-brand-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+.footer-col-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-md);
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-links svg { width: 14px; height: 14px; }
+
+.footer-bottom {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-md);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.footer-social {
+  display: flex;
+  gap: var(--space-md);
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+}
+.footer-social a:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+}
+.footer-social svg { width: 16px; height: 16px; color: rgba(255,255,255,0.7); }
+.footer-social a:hover svg { color: var(--white); }
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(26, 26, 46, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s var(--ease);
+}
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-menu-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  background: var(--white);
+  padding: var(--space-xl);
+  transform: translateX(100%);
+  transition: transform 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.mobile-menu.open .mobile-menu-panel {
+  transform: translateX(0);
+}
+.mobile-menu-close {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+}
+.mobile-menu-close:hover { background: var(--surface); }
+.mobile-menu-close svg { width: 24px; height: 24px; }
+.mobile-menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.mobile-menu-links a {
+  display: block;
+  padding: var(--space-md);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  border-radius: var(--radius-md);
+  transition: background 0.2s;
+}
+.mobile-menu-links a:hover { background: var(--surface); }
+.mobile-menu-cta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.mobile-menu-cta .btn-primary { justify-content: center; }
+.mobile-menu-phone {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══ DEMO RIBBON ═══ -->
+<div class="demo-ribbon">Theme 2<br>Fresh Riviera Light<br>Démonstration</div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Realisations</a></li>
+      <li><a href="#temoignages">Avis</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="service-membrane.html">Membrane</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:0674385978" class="nav-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        06 74 38 59 78
+      </a>
+      <a href="#contact" class="btn-nav">Diagnostic gratuit</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Ouvrir le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="menuClose" aria-label="Fermer le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <ul class="mobile-menu-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Realisations</a></li>
+      <li><a href="#temoignages">Avis clients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="service-membrane.html">Membrane armee</a></li>
+    </ul>
+    <div class="mobile-menu-cta">
+      <a href="#contact" class="btn-primary">Diagnostic gratuit</a>
+      <a href="tel:0674385978" class="mobile-menu-phone">06 74 38 59 78</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-caustics"></div>
+  <div class="hero-blob"></div>
+  <div class="container hero-content">
+    <div class="hero-badge reveal">
+      <span class="dot"></span>
+      Expert piscine Alpes-Maritimes
+    </div>
+    <h1 class="reveal reveal-delay-1">Votre piscine<br>merite le <em>meilleur</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">Expert en renovation et etancheite de piscines dans les Alpes-Maritimes. Membrane armee, liner, cuvelage — un savoir-faire artisanal au service de votre bassin.</p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="#contact" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Diagnostic gratuit
+      </a>
+      <a href="tel:0674385978" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        06 74 38 59 78
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-inner reveal">
+      <span class="trust-item"><img src="../assets/images/renolit.webp" alt="Renolit"></span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">DLW Delifol</span>
+      <span class="trust-sep"></span>
+      <span class="trust-item"><img src="../assets/images/soprema.webp" alt="Soprema"></span>
+      <span class="trust-sep"></span>
+      <span class="trust-item"><img src="../assets/images/cgt.webp" alt="CGT Alkor"></span>
+      <span class="trust-sep"></span>
+      <span class="trust-item"><img src="../assets/images/proflex.webp" alt="Proflex"></span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">Garantie 10 ans</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES (Bento Grid) ═══ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Nos expertises</div>
+      <h2 class="section-title">Des solutions sur-mesure<br>pour chaque bassin</h2>
+      <p class="section-desc">De la renovation complete au depannage ponctuel, nous intervenons avec precision et exigence sur tous types de piscines.</p>
+    </div>
+    <div class="bento-grid">
+      <!-- Main cards -->
+      <div class="bento-card bento-card--main reveal">
+        <img src="../assets/images/membrane.webp" alt="Membrane armee" class="bento-card-img">
+        <div class="bento-icon bento-icon--blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096D6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/><path d="M6 14h.01"/><path d="M10 14h4"/></svg>
+        </div>
+        <h3 class="bento-title">Membrane armee</h3>
+        <p class="bento-desc">Etancheite haut de gamme en PVC arme 150/100e. Adaptee a toutes les formes de bassin, resistant aux UV et au chlore. Garantie decennale.</p>
+        <a href="service-membrane.html" class="bento-link">
+          Decouvrir
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="bento-card bento-card--main reveal reveal-delay-1">
+        <img src="../assets/images/OZIMEK-min.webp" alt="Liner" class="bento-card-img">
+        <div class="bento-icon bento-icon--sand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A3927F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="bento-title">Liner</h3>
+        <p class="bento-desc">Pose et remplacement de liner sur-mesure. Large choix de coloris et de textures pour personnaliser votre bassin. Installation rapide et soignee.</p>
+        <a href="#" class="bento-link">
+          En savoir plus
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="bento-card bento-card--main reveal reveal-delay-2">
+        <img src="../assets/images/piscinetest.webp" alt="Cuvelage souple" class="bento-card-img">
+        <div class="bento-icon bento-icon--blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096D6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="bento-title">Cuvelage souple</h3>
+        <p class="bento-desc">Solution d'impermeabilisation ideale pour les bassins en beton brut ou enduit. Application directe sans travaux lourds, finition esthetique impeccable.</p>
+        <a href="#" class="bento-link">
+          En savoir plus
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Secondary cards -->
+      <div class="bento-card reveal reveal-delay-3">
+        <div class="bento-icon bento-icon--surface">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5A6175" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+        </div>
+        <h3 class="bento-title">Recherche de fuites</h3>
+        <p class="bento-desc">Detection precise par mise en pression, colorant et ecoute acoustique.</p>
+      </div>
+      <div class="bento-card reveal reveal-delay-4">
+        <div class="bento-icon bento-icon--surface">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5A6175" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="bento-title">Depannage</h3>
+        <p class="bento-desc">Intervention rapide sur les problemes de filtration, pompe et equipements.</p>
+      </div>
+      <div class="bento-card reveal reveal-delay-5">
+        <div class="bento-icon bento-icon--surface">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5A6175" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <h3 class="bento-title">Equipements</h3>
+        <p class="bento-desc">Fourniture et installation d'equipements : pompes, filtres, eclairage, volets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REALISATIONS ═══ -->
+<section class="section section-alt" id="realisations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Realisations</div>
+      <h2 class="section-title">Nos projets recents</h2>
+      <p class="section-desc">Chaque chantier est unique. Decouvrez quelques-unes de nos interventions dans les Alpes-Maritimes.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-visual project-visual--menton">
+          <img src="../assets/images/IMG_7364.webp" alt="Piscine renovee a Menton">
+        </div>
+        <div class="project-body">
+          <div class="project-type">Renovation complete</div>
+          <div class="project-city">Menton</div>
+          <p class="project-desc">Piscine carrelee transformee avec membrane 3D Touch Prestige. Finition haut de gamme, aspect mosaique moderne.</p>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-visual project-visual--grasse">
+          <img src="../assets/images/IMG_6129.webp" alt="Couloir de nage a Grasse">
+        </div>
+        <div class="project-body">
+          <div class="project-type">Couloir de nage</div>
+          <div class="project-city">Grasse</div>
+          <p class="project-desc">Couloir de nage 13 x 3.5m. Membrane armee unie, margelles integrees, rendu epure et sportif.</p>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-visual project-visual--antibes">
+          <img src="../assets/images/IMG_4653.webp" alt="Piscine forme speciale a Antibes">
+        </div>
+        <div class="project-body">
+          <div class="project-type">Forme speciale</div>
+          <div class="project-city">Antibes</div>
+          <p class="project-desc">Bassin en pointe de diamant. Pose sur-mesure de membrane avec decoupe geometrique de precision.</p>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-visual project-visual--peille">
+          <img src="../assets/images/IMG_5289.webp" alt="Renovation mosaique a Peille">
+        </div>
+        <div class="project-body">
+          <div class="project-type">Renovation mosaique</div>
+          <div class="project-city">Peille</div>
+          <p class="project-desc">Passage de mosaique a membrane armee. Chemisage non destructif des canalisations, zero demolition.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHIFFRES CLES ═══ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-count="8">8+</div>
+        <div class="stat-label">Projets documentes</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number">10 ans</div>
+        <div class="stat-label">Garantie etancheite</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number">06 & 83</div>
+        <div class="stat-label">Zone d'intervention</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEMOIGNAGES ═══ -->
+<section class="section" id="temoignages">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Avis clients</div>
+      <h2 class="section-title">Ils nous font confiance</h2>
+      <p class="section-desc">La satisfaction de nos clients est notre meilleure carte de visite.</p>
+    </div>
+    <div class="testimonials-track" id="testimonialTrack">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Service cinq etoiles, grande reactivite. Le resultat est au-dela de nos esperances. Notre piscine a retrouve une seconde jeunesse.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">Ed</div>
+          <div>
+            <div class="testimonial-name">Emmanuel dePlace</div>
+            <div class="testimonial-role">Menton (06)</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Un professionnel comme il en reste peu. Travail impeccable, conseils avises et un suivi de chantier exemplaire du debut a la fin.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RC</div>
+          <div>
+            <div class="testimonial-name">Robin Chabrand</div>
+            <div class="testimonial-role">Grasse (06)</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Chef d'entreprise chaleureux et competent. Il a su nous guider vers la meilleure solution pour notre bassin vieillissant. Rapport qualite-prix excellent.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">NL</div>
+          <div>
+            <div class="testimonial-name">Nicolas Lautard</div>
+            <div class="testimonial-role">Antibes (06)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials-dots">
+      <button class="active" data-index="0" aria-label="Temoignage 1"></button>
+      <button data-index="1" aria-label="Temoignage 2"></button>
+      <button data-index="2" aria-label="Temoignage 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Questions frequentes</div>
+      <h2 class="section-title">Tout savoir avant<br>votre projet</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal" data-faq>
+        <button class="faq-question" aria-expanded="false">
+          Quels sont les avantages de la membrane armee par rapport au liner ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">La membrane armee est plus epaisse (150/100e contre 75/100e pour un liner), plus resistante aux UV, aux produits chimiques et aux chocs. Elle est posee directement sur le support et soudee sur place, ce qui la rend adaptee a toutes les formes de bassin, y compris les plus complexes. Sa duree de vie est superieure a 15 ans avec une garantie decennale.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1" data-faq>
+        <button class="faq-question" aria-expanded="false">
+          Combien de temps dure une renovation complete de piscine ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">La duree depend de la taille du bassin et de l'ampleur des travaux. En general, comptez 1 a 2 semaines pour une renovation complete avec pose de membrane armee. Le diagnostic prealable nous permet de vous donner un calendrier precis avant le demarrage du chantier.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2" data-faq>
+        <button class="faq-question" aria-expanded="false">
+          Intervenez-vous sur tous les types de piscines ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Oui, nous intervenons sur tous les types de bassins : beton, coque polyester, parpaings, metal. Que votre piscine soit rectangulaire, ovale, en forme libre ou meme un couloir de nage, nous adaptons nos solutions a la structure existante.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3" data-faq>
+        <button class="faq-question" aria-expanded="false">
+          Comment traitez-vous les fuites structurelles ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Nous commencons par un diagnostic complet : mise en pression des canalisations, test au colorant, ecoute acoustique. Une fois la fuite localisee, nous intervenons soit par chemisage non destructif des canalisations, soit par reparation locale de la membrane ou du beton. Le chemisage permet de traiter les fuites sans demolition.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-4" data-faq>
+        <button class="faq-question" aria-expanded="false">
+          Comment entretenir une membrane armee ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">L'entretien est simple et similaire a celui d'un liner classique. Un brossage regulier des parois, un controle du pH et du chlore, et un nettoyage annuel au nettoyeur haute pression basse puissance suffisent. La membrane armee ne craint pas les produits de traitement classiques et resiste parfaitement aux variations de temperature.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section class="cta-final" id="contact">
+  <div class="container">
+    <div class="cta-final-content reveal">
+      <h2>Pret a renover votre piscine ?</h2>
+      <p>Contactez-nous pour un diagnostic gratuit et sans engagement.</p>
+      <div class="cta-final-actions">
+        <a href="mailto:contact@lafrenchpiscine.fr" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Diagnostic gratuit
+        </a>
+        <a href="tel:0674385978" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          06 74 38 59 78
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="index.html" class="nav-logo" style="display:inline-block;margin-bottom:var(--space-md);">
+          <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+        </a>
+        <p class="footer-brand-sub">
+          CARDI PISCINES<br>
+          SIRET 89153972800016<br><br>
+          Expert en renovation et etancheite de piscines<br>
+          Alpes-Maritimes (06) & Var (83)
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-membrane.html">Membrane armee</a></li>
+          <li><a href="#">Liner</a></li>
+          <li><a href="#">Cuvelage souple</a></li>
+          <li><a href="#">Recherche de fuites</a></li>
+          <li><a href="#">Depannage</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li>
+            <a href="tel:0674385978">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              06 74 38 59 78
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contact@lafrenchpiscine.fr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              contact@lafrenchpiscine.fr
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/lafrenchpiscine" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+              @lafrenchpiscine
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CARDI PISCINES — La French Piscine. Tous droits reserves.</span>
+      <div class="footer-social">
+        <a href="https://instagram.com/lafrenchpiscine" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── Intersection Observer for reveals ─── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ─── Nav scroll effect ─── */
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  const scrollY = window.scrollY;
+  if (scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = scrollY;
+}, { passive: true });
+
+/* ─── Mobile menu ─── */
+const mobileMenu = document.getElementById('mobileMenu');
+document.getElementById('menuOpen').addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('menuClose').addEventListener('click', closeMenu);
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMenu();
+});
+document.querySelectorAll('.mobile-menu-links a').forEach(a => {
+  a.addEventListener('click', closeMenu);
+});
+
+/* ─── FAQ Accordion ─── */
+document.querySelectorAll('[data-faq]').forEach(item => {
+  const btn = item.querySelector('.faq-question');
+  btn.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+    // Close all
+    document.querySelectorAll('[data-faq]').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    // Toggle clicked
+    if (!isActive) {
+      item.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+/* ─── Testimonials dots ─── */
+const track = document.getElementById('testimonialTrack');
+const dots = document.querySelectorAll('.testimonials-dots button');
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const index = parseInt(dot.dataset.index);
+    const cards = track.querySelectorAll('.testimonial-card');
+    if (cards[index]) {
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+  });
+});
+
+track.addEventListener('scroll', () => {
+  const scrollLeft = track.scrollLeft;
+  const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 24;
+  const activeIndex = Math.round(scrollLeft / cardWidth);
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeIndex);
+  });
+}, { passive: true });
+
+/* ─── Smooth scroll for anchor links ─── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const navHeight = document.getElementById('nav').offsetHeight;
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>La French Piscine — Expert en rénovation et étanchéité piscine Nice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   LA FRENCH PISCINE — Mediterranean Stone Theme
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Stone palette */
+  --stone: #A3927F;
+  --stone-light: #C4B5A5;
+  --stone-lighter: #D9CEBF;
+  --stone-dark: #8A7D6C;
+  --stone-darker: #6B6054;
+
+  /* Warm backgrounds */
+  --cream: #FAF6F1;
+  --linen: #F5EDE4;
+  --warm-white: #FFFAF5;
+
+  /* Mediterranean blue */
+  --sea: #1B4965;
+  --sea-mid: #2C6E8A;
+  --sea-light: #3D8CAA;
+  --sea-pale: #E8F0F5;
+
+  /* Accents */
+  --terracotta: #C4703F;
+  --terracotta-light: #D4945E;
+  --terracotta-pale: #FDF3EB;
+
+  /* Text */
+  --text: #2D2926;
+  --text-soft: #5C554F;
+  --text-muted: #8A8279;
+
+  /* Typography */
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --section-pad: clamp(64px, 10vw, 120px);
+  --container: 1200px;
+
+  /* Effects */
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --shadow-soft: 0 4px 24px rgba(45, 41, 38, 0.06);
+  --shadow-hover: 0 8px 40px rgba(45, 41, 38, 0.12);
+  --shadow-card: 0 2px 12px rgba(45, 41, 38, 0.04);
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.65;
+  font-size: 17px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--sans); cursor: pointer; border: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+/* ─── Utility ─── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes tileShift {
+  0% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+  100% { opacity: 0.03; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ═══════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+}
+
+.nav.scrolled {
+  background: rgba(250, 246, 241, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(45, 41, 38, 0.06);
+  padding: 10px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--warm-white);
+  letter-spacing: -0.02em;
+  transition: color 0.4s;
+}
+
+.nav.scrolled .nav-logo {
+  color: var(--sea);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--terracotta);
+  border-radius: 1px;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: #fff; }
+
+.nav.scrolled .nav-links a { color: var(--text-soft); }
+.nav.scrolled .nav-links a:hover { color: var(--sea); }
+
+.nav-cta {
+  padding: 10px 24px !important;
+  background: var(--terracotta) !important;
+  color: #fff !important;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: background 0.3s, transform 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--terracotta-light) !important;
+  transform: translateY(-1px);
+}
+
+.nav-cta::after { display: none !important; }
+
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 8px;
+}
+
+.nav-mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--warm-white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s, background 0.4s;
+}
+
+.nav.scrolled .nav-mobile-toggle span { background: var(--text); }
+
+/* ═══════════════════════════════════
+   HERO
+   ═══════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--sea);
+  background-image: url('../assets/images/IMG_6233.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Warm overlay on hero background image */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* Large diamonds */
+    linear-gradient(45deg, transparent 46%, rgba(163,146,127,0.06) 46%, rgba(163,146,127,0.06) 54%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, rgba(163,146,127,0.06) 46%, rgba(163,146,127,0.06) 54%, transparent 54%),
+    /* Grid overlay */
+    linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    /* Warm semi-transparent overlay */
+    linear-gradient(160deg, rgba(20,47,71,0.82) 0%, rgba(27,73,101,0.75) 30%, rgba(27,73,101,0.7) 60%, rgba(22,59,85,0.82) 100%);
+  background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px, 100% 100%;
+  animation: tileShift 8s ease-in-out infinite;
+}
+
+/* Warm glow from bottom */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(196,112,63,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Decorative stone circles */
+.hero-deco {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(163,146,127,0.12);
+  pointer-events: none;
+}
+
+.hero-deco-1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -100px;
+  animation: float 10s ease-in-out infinite;
+}
+
+.hero-deco-2 {
+  width: 250px;
+  height: 250px;
+  bottom: -50px;
+  left: -50px;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+.hero-deco-3 {
+  width: 150px;
+  height: 150px;
+  top: 30%;
+  left: 8%;
+  border-color: rgba(163,146,127,0.08);
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 120px 24px 80px;
+  animation: fadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(163,146,127,0.15);
+  border: 1px solid rgba(163,146,127,0.2);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+  margin-bottom: 32px;
+}
+
+.hero-badge svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--terracotta-light);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--warm-white);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--stone-light);
+}
+
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.hero-subtitle span {
+  color: var(--stone-light);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--terracotta);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(196,112,63,0.3);
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196,112,63,0.4);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: var(--warm-white);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.hero-phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 15px;
+}
+
+.hero-phone svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--stone-light);
+}
+
+.hero-phone a {
+  color: var(--stone-light);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.hero-phone a:hover { color: #fff; }
+
+/* Curved bottom */
+.hero-curve {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.hero-curve svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ═══════════════════════════════════
+   SECTION TITLES
+   ═══════════════════════════════════ */
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+
+.section-tag::before,
+.section-tag::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--stone-light);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 500;
+  color: var(--sea);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 18px;
+  color: var(--text-soft);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════
+   PRESENTATION
+   ═══════════════════════════════════ */
+.presentation {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.pres-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+.pres-visual {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: linear-gradient(145deg, var(--sea) 0%, #2C6E8A 100%);
+}
+
+.pres-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pres-visual-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.pres-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 500;
+  color: var(--sea);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.pres-text p {
+  font-size: 17px;
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.pres-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.pres-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.pres-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--terracotta-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pres-feature-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--terracotta);
+}
+
+/* ═══════════════════════════════════
+   SERVICES
+   ═══════════════════════════════════ */
+.services {
+  padding: var(--section-pad) 0;
+  background: var(--linen);
+  position: relative;
+}
+
+/* Subtle stone texture overlay */
+.services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(163,146,127,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(27,73,101,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.services-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3vw, 40px);
+  transition: all var(--transition);
+  border: 1px solid rgba(163,146,127,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--stone), var(--stone-light));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(163,146,127,0.25);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-card.featured {
+  background: linear-gradient(145deg, var(--sea), #234F6E);
+  border-color: transparent;
+  color: #fff;
+}
+
+.service-card.featured::before {
+  background: linear-gradient(90deg, var(--terracotta), var(--terracotta-light));
+  opacity: 1;
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: var(--linen);
+}
+
+.service-card.featured .service-icon {
+  background: rgba(255,255,255,0.12);
+}
+
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--sea);
+}
+
+.service-card.featured .service-icon svg { fill: #fff; }
+
+.service-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.5vw, 24px);
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--sea);
+  letter-spacing: -0.01em;
+}
+
+.service-card.featured h3 { color: #fff; }
+
+.service-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.service-card.featured p { color: rgba(255,255,255,0.75); }
+
+.service-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--terracotta-pale);
+  color: var(--terracotta);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 100px;
+  margin-top: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.service-card.featured .service-tag {
+  background: rgba(196,112,63,0.25);
+  color: var(--terracotta-light);
+}
+
+.services-secondary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-sm {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: clamp(20px, 2.5vw, 28px);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all var(--transition);
+  border: 1px solid rgba(163,146,127,0.1);
+}
+
+.service-sm:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.service-sm-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--sea-pale);
+}
+
+.service-sm-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--sea);
+}
+
+.service-sm h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sea);
+  margin-bottom: 6px;
+}
+
+.service-sm p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════
+   REALISATIONS
+   ═══════════════════════════════════ */
+.realisations {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.real-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.real-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.real-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Pool scene backgrounds via CSS */
+.real-card-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.real-card:hover .real-card-bg {
+  transform: scale(1.05);
+}
+
+.real-menton .real-card-bg {
+  background: url('../assets/images/IMG_7364.webp') center/cover no-repeat;
+}
+
+.real-grasse .real-card-bg {
+  background: url('../assets/images/IMG_6129.webp') center/cover no-repeat;
+}
+
+.real-chateauneuf .real-card-bg {
+  background: url('../assets/images/IMG_0467.webp') center/cover no-repeat;
+}
+
+.real-peille .real-card-bg {
+  background: url('../assets/images/IMG_5289.webp') center/cover no-repeat;
+}
+
+.real-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(27,41,38,0.8) 100%);
+  z-index: 1;
+}
+
+.real-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(20px, 3vw, 32px);
+  z-index: 2;
+}
+
+.real-card-city {
+  display: inline-block;
+  padding: 4px 14px;
+  background: var(--terracotta);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.real-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.real-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════
+   TESTIMONIALS
+   ═══════════════════════════════════ */
+.testimonials {
+  padding: var(--section-pad) 0;
+  background: var(--sea);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(163,146,127,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(163,146,127,0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.testimonials .section-tag { color: var(--stone-light); }
+.testimonials .section-tag::before,
+.testimonials .section-tag::after { background: rgba(163,146,127,0.3); }
+.testimonials .section-title { color: var(--warm-white); }
+.testimonials .section-desc { color: rgba(255,255,255,0.6); }
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.test-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3vw, 36px);
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.test-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+  border-color: rgba(163,146,127,0.2);
+}
+
+.test-quote {
+  font-family: var(--serif);
+  font-size: 48px;
+  line-height: 1;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.test-card blockquote {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.85);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.test-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.test-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--stone), var(--stone-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.test-name {
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+}
+
+.test-stars {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.test-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--terracotta-light);
+}
+
+/* ═══════════════════════════════════
+   ZONE D'INTERVENTION
+   ═══════════════════════════════════ */
+.zone {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.zone-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+.zone-map {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Stylized coast map with CSS */
+.zone-coast {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 60% 50%, var(--sea-pale) 0%, rgba(232,240,245,0) 70%);
+  border: 2px solid rgba(163,146,127,0.15);
+}
+
+.zone-coast::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 70%;
+  height: 70%;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background:
+    linear-gradient(135deg, rgba(27,73,101,0.08) 0%, rgba(44,110,138,0.12) 100%);
+  border: 1px solid rgba(27,73,101,0.1);
+}
+
+.zone-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  box-shadow: 0 0 0 4px rgba(196,112,63,0.2);
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.zone-dot:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 8px rgba(196,112,63,0.15);
+}
+
+.zone-dot::after {
+  content: attr(data-city);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sea);
+  background: var(--warm-white);
+  padding: 3px 10px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.zone-dot:hover::after { opacity: 1; }
+
+/* Positions for cities on the "map" */
+.zone-dot-nice { top: 48%; left: 55%; }
+.zone-dot-cannes { top: 55%; left: 30%; }
+.zone-dot-antibes { top: 52%; left: 40%; }
+.zone-dot-menton { top: 40%; left: 78%; }
+.zone-dot-grasse { top: 42%; left: 25%; }
+.zone-dot-monaco { top: 42%; left: 72%; }
+
+.zone-dot-nice { width: 16px; height: 16px; background: var(--sea); box-shadow: 0 0 0 6px rgba(27,73,101,0.15); }
+
+/* Pulse on Nice */
+.zone-dot-nice::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--sea-mid);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.zone-text h3 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 500;
+  color: var(--sea);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.zone-text p {
+  font-size: 17px;
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.zone-cities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.zone-city-tag {
+  padding: 8px 18px;
+  background: var(--warm-white);
+  border: 1px solid rgba(163,146,127,0.2);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.zone-city-tag:hover {
+  background: var(--sea);
+  color: #fff;
+  border-color: var(--sea);
+}
+
+.zone-city-tag.primary {
+  background: var(--sea);
+  color: #fff;
+  border-color: var(--sea);
+}
+
+/* ═══════════════════════════════════
+   PARTENAIRES
+   ═══════════════════════════════════ */
+.partners {
+  padding: clamp(48px, 6vw, 80px) 0;
+  background: var(--linen);
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 5vw, 72px);
+  flex-wrap: wrap;
+}
+
+.partner-name {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 600;
+  color: var(--stone);
+  opacity: 0.5;
+  transition: opacity 0.3s, color 0.3s;
+  letter-spacing: 0.02em;
+}
+
+.partner-name:hover {
+  opacity: 1;
+  color: var(--sea);
+}
+
+/* ═══════════════════════════════════
+   FAQ
+   ═══════════════════════════════════ */
+.faq {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(163,146,127,0.2);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(163,146,127,0.2);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 500;
+  color: var(--sea);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.faq-question:hover { color: var(--terracotta); }
+
+.faq-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--linen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.faq-item.open .faq-icon {
+  background: var(--terracotta);
+  transform: rotate(45deg);
+}
+
+.faq-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--stone-dark);
+  transition: fill 0.3s;
+}
+
+.faq-item.open .faq-icon svg { fill: #fff; }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              padding 0.4s;
+}
+
+.faq-answer-inner {
+  padding: 0 0 24px 0;
+  font-size: 16px;
+  color: var(--text-soft);
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════
+   CTA FINAL
+   ═══════════════════════════════════ */
+.cta-final {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(160deg, var(--sea) 0%, #234F6E 50%, #2C6E8A 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(45deg, transparent 46%, rgba(163,146,127,0.04) 46%, rgba(163,146,127,0.04) 54%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, rgba(163,146,127,0.04) 46%, rgba(163,146,127,0.04) 54%, transparent 54%);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.cta-final-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-final h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 500;
+  color: var(--warm-white);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.cta-final p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.cta-final .btn-primary {
+  font-size: 18px;
+  padding: 18px 44px;
+}
+
+.cta-final-phone {
+  margin-top: 24px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+}
+
+.cta-final-phone a {
+  color: var(--stone-light);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.cta-final-phone a:hover { color: #fff; }
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+.footer {
+  background: #1A1816;
+  padding: 64px 0 32px;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin-bottom: 4px;
+}
+
+.footer-legal-name {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+}
+
+.footer-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--stone-light);
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.3s;
+}
+
+.footer-col a:hover { color: var(--terracotta-light); }
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.footer-social a:hover {
+  background: var(--terracotta);
+}
+
+.footer-social svg {
+  width: 18px;
+  height: 18px;
+  fill: rgba(255,255,255,0.5);
+}
+
+.footer-social a:hover svg { fill: #fff; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════ */
+/* ═══════════════════════════════════
+   DEMO RIBBON
+   ═══════════════════════════════════ */
+.demo-ribbon {
+  position: fixed;
+  top: 20px;
+  left: -45px;
+  z-index: 10000;
+  background: linear-gradient(135deg, #A3927F, #C4703F);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════
+   SERVICE CARD IMAGES
+   ═══════════════════════════════════ */
+.service-card-img {
+  display: block;
+  width: calc(100% + 2 * clamp(28px, 3vw, 40px));
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  margin-top: calc(-1 * clamp(28px, 3vw, 40px));
+  margin-left: calc(-1 * clamp(28px, 3vw, 40px));
+  margin-right: calc(-1 * clamp(28px, 3vw, 40px));
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .services-main { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile-toggle { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 24, 22, 0.97);
+    backdrop-filter: blur(16px);
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 99;
+  }
+
+  .nav-links.open a {
+    color: rgba(255,255,255,0.8);
+    font-size: 20px;
+  }
+
+  .nav-links.open .nav-cta {
+    font-size: 18px !important;
+    padding: 14px 32px !important;
+  }
+
+  .hero-content { padding: 100px 20px 60px; }
+
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn { width: 100%; justify-content: center; }
+
+  .pres-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .pres-visual { max-height: 280px; }
+
+  .services-main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .services-secondary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .real-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .real-card { aspect-ratio: 16/9; }
+
+  .test-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .zone-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .zone-map { max-width: 320px; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .services-main {
+    grid-template-columns: 1fr 1fr;
+  }
+  .services-main .service-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .services-secondary {
+    grid-template-columns: 1fr 1fr;
+  }
+  .test-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .test-grid .test-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">Theme 3<br>Mediterranean Stone<br>Demonstration</div>
+
+<!-- ═══════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#temoignages">Avis</a></li>
+      <li><a href="#zone">Zone</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Diagnostic gratuit</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HERO
+     ═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+  <div class="hero-deco hero-deco-3"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Expert piscine depuis Nice
+    </div>
+    <h1>La French Piscine</h1>
+    <p class="hero-subtitle">
+      Expert en rénovation et étanchéité<br>
+      <span>Liner &middot; Membrane armée &middot; Cuvelage souple</span><br>
+      Alpes-Maritimes &amp; Var
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Demander un diagnostic gratuit
+      </a>
+      <a href="service-membrane.html" class="btn btn-secondary">
+        Découvrir nos solutions
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-phone">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <a href="tel:+33674385978">06 74 38 59 78</a>
+    </div>
+  </div>
+
+  <div class="hero-curve">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FAF6F1"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     PRESENTATION
+     ═══════════════════════════════════ -->
+<section class="presentation" id="presentation">
+  <div class="container">
+    <div class="pres-grid">
+      <div class="pres-visual reveal">
+        <img src="../assets/images/equipe.webp" alt="L'equipe La French Piscine sur un chantier">
+        <span class="pres-visual-badge">Cote d'Azur</span>
+      </div>
+      <div class="pres-text reveal reveal-delay-2">
+        <h2>L'excellence artisanale<br>au service de votre piscine</h2>
+        <p>Creee sur la Cote d'Azur, <strong>La French Piscine</strong> s'impose comme la reference en etancheites souples pour piscines privees et collectives.</p>
+        <p>Notre engagement : un travail realise exclusivement par nos equipes, sans sous-traitance. Chaque chantier beneficie de notre expertise et de notre <strong>garantie decennale</strong>.</p>
+        <div class="pres-features">
+          <div class="pres-feature">
+            <div class="pres-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            Zero sous-traitance
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            Garantie decennale
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            Interventions 06 &amp; 83
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SERVICES
+     ═══════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Nos expertises</div>
+      <h2 class="section-title">Des solutions pour chaque piscine</h2>
+      <p class="section-desc">De la renovation complete a l'entretien courant, nous couvrons l'ensemble des besoins de votre bassin avec des materiaux de premier choix.</p>
+    </div>
+
+    <div class="services-main">
+      <!-- Membrane -->
+      <div class="service-card featured reveal reveal-delay-1">
+        <img src="../assets/images/membrane.webp" alt="Pose de membrane armee" class="service-card-img">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 6a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2z"/></svg>
+        </div>
+        <h3>Membrane armee</h3>
+        <p>Epaisseur 150 a 200 centiemes, 3 couches de resine vierge avec trame en polyester. Soudure au fer a air chaud selon la norme T54-804.</p>
+        <span class="service-tag">Garantie 10 ans</span>
+      </div>
+
+      <!-- Liner -->
+      <div class="service-card reveal reveal-delay-2">
+        <img src="../assets/images/OZIMEK-min.webp" alt="Pose de liner sur-mesure" class="service-card-img">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <h3>Liner</h3>
+        <p>Epaisseur 75 a 100 centiemes, confection sur-mesure. Large gamme de couleurs et de finitions pour s'adapter a toutes les envies.</p>
+        <span class="service-tag">Sur-mesure</span>
+      </div>
+
+      <!-- Cuvelage -->
+      <div class="service-card reveal reveal-delay-3">
+        <img src="../assets/images/piscinetest.webp" alt="Cuvelage souple de piscine" class="service-card-img">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        </div>
+        <h3>Cuvelage souple</h3>
+        <p>Resine polyurethane specialisee pour l'etancheite des bassins beton. Homologuee CSTB et Bureau VERITAS.</p>
+        <span class="service-tag">Approbation CSTB</span>
+      </div>
+    </div>
+
+    <div class="services-secondary" style="margin-top: 24px;">
+      <!-- Recherche de fuites -->
+      <div class="service-sm reveal reveal-delay-1">
+        <div class="service-sm-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <div>
+          <h4>Recherche de fuites</h4>
+          <p>Audit en 3 volets : controle visuel, mise en pression, detection electronique.</p>
+        </div>
+      </div>
+
+      <!-- Depannage -->
+      <div class="service-sm reveal reveal-delay-2">
+        <div class="service-sm-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <h4>Depannage</h4>
+          <p>Pompe, filtration, reseau hydraulique, electricite — intervention rapide.</p>
+        </div>
+      </div>
+
+      <!-- Equipements -->
+      <div class="service-sm reveal reveal-delay-3">
+        <div class="service-sm-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div>
+          <h4>Equipements</h4>
+          <p>Electrolyseur, pompe a chaleur, robots, couvertures automatiques.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     REALISATIONS
+     ═══════════════════════════════════ -->
+<section class="realisations" id="realisations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Nos dernieres realisations</h2>
+      <p class="section-desc">Chaque chantier est unique. Decouvrez quelques-unes de nos interventions recentes sur la Cote d'Azur.</p>
+    </div>
+
+    <div class="real-grid">
+      <div class="real-card real-menton reveal reveal-delay-1">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Menton</span>
+          <h3>Renovation piscine carrelee</h3>
+          <p>Membrane 3D Touch Prestige Renolit</p>
+        </div>
+      </div>
+
+      <div class="real-card real-grasse reveal reveal-delay-2">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Grasse</span>
+          <h3>Couloir de nage 13 x 3.5m</h3>
+          <p>Membrane 3D Touch Authentic</p>
+        </div>
+      </div>
+
+      <div class="real-card real-chateauneuf reveal reveal-delay-3">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Chateauneuf</span>
+          <h3>Piscine debordement</h3>
+          <p>Automatisation Regulectronik</p>
+        </div>
+      </div>
+
+      <div class="real-card real-peille reveal reveal-delay-4">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Peille</span>
+          <h3>De mosaique a membrane</h3>
+          <p>3D Touch Elegance Renolit</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     TESTIMONIALS
+     ═══════════════════════════════════ -->
+<section class="testimonials" id="temoignages">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Temoignages</div>
+      <h2 class="section-title">Ce que disent nos clients</h2>
+      <p class="section-desc">La satisfaction de nos clients est notre meilleure carte de visite.</p>
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-quote">&ldquo;</div>
+        <blockquote>Nous avons fait appel a Alexandre et aux equipes de La French Piscine pour la renovation de notre bassin. Un service cinq etoiles ! Grande reactivite et gentillesse.</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">E</div>
+          <div>
+            <div class="test-name">Emmanuel dePlace</div>
+            <div class="test-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-quote">&ldquo;</div>
+        <blockquote>Alexandre est un professionnel comme il en reste peu. Le travail est impeccable, dans les delais, et toujours avec le sourire. Je recommande sans hesitation.</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">R</div>
+          <div>
+            <div class="test-name">Robin Chabrand</div>
+            <div class="test-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal reveal-delay-3">
+        <div class="test-quote">&ldquo;</div>
+        <blockquote>Un chef d'entreprise chaleureux et competent qui prend le temps de conseiller. Le resultat depasse nos attentes. Merci pour votre professionnalisme.</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">N</div>
+          <div>
+            <div class="test-name">Nicolas Lautard</div>
+            <div class="test-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ZONE D'INTERVENTION
+     ═══════════════════════════════════ -->
+<section class="zone" id="zone">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Zone d'intervention</div>
+      <h2 class="section-title">Toute la Cote d'Azur</h2>
+    </div>
+
+    <div class="zone-layout">
+      <div class="zone-map reveal">
+        <div class="zone-coast"></div>
+        <div class="zone-dot zone-dot-nice" data-city="Nice"></div>
+        <div class="zone-dot zone-dot-cannes" data-city="Cannes"></div>
+        <div class="zone-dot zone-dot-antibes" data-city="Antibes"></div>
+        <div class="zone-dot zone-dot-menton" data-city="Menton"></div>
+        <div class="zone-dot zone-dot-grasse" data-city="Grasse"></div>
+        <div class="zone-dot zone-dot-monaco" data-city="Monaco"></div>
+      </div>
+      <div class="zone-text reveal reveal-delay-2">
+        <h3>Nous intervenons dans les Alpes-Maritimes</h3>
+        <p>De Menton a Cannes, en passant par Nice, Antibes, Grasse et Monaco — nous couvrons l'ensemble du departement des Alpes-Maritimes (06).</p>
+        <p>Intervention egalement possible dans le <strong>Var (83)</strong> sur devis.</p>
+        <div class="zone-cities">
+          <span class="zone-city-tag primary">Nice</span>
+          <span class="zone-city-tag">Cannes</span>
+          <span class="zone-city-tag">Antibes</span>
+          <span class="zone-city-tag">Menton</span>
+          <span class="zone-city-tag">Grasse</span>
+          <span class="zone-city-tag">Monaco</span>
+          <span class="zone-city-tag">Var (83)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     PARTENAIRES
+     ═══════════════════════════════════ -->
+<section class="partners">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom: 40px;">
+      <div class="section-tag">Nos partenaires</div>
+    </div>
+    <div class="partners-row reveal">
+      <img src="../assets/images/renolit.webp" alt="Renolit" style="height:35px;width:auto;opacity:0.6;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+      <img src="../assets/images/logo-verde.png" alt="Verde" style="height:35px;width:auto;opacity:0.6;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+      <img src="../assets/images/cgt.webp" alt="CGT Alkor" style="height:35px;width:auto;opacity:0.6;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+      <img src="../assets/images/proflex.webp" alt="Proflex" style="height:35px;width:auto;opacity:0.6;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FAQ
+     ═══════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Questions frequentes</div>
+      <h2 class="section-title">Tout savoir avant de se lancer</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          Quelle est la difference entre un liner et une membrane armee ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Le liner est une poche thermoformee en PVC souple (75-100 centiemes d'epaisseur), posee sur les parois et le fond du bassin. La membrane armee, plus epaisse (150-200 centiemes), est constituee de 3 couches de resine avec une trame en polyester. Elle est soudee directement sur le support au fer a air chaud, ce qui en fait la solution la plus resistante et durable du marche.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-question" aria-expanded="false">
+          Combien de temps dure une renovation de piscine ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">La duree depend de l'ampleur des travaux. Un remplacement de liner simple prend generalement 2 a 3 jours. La pose d'une membrane armee necessite 5 a 10 jours ouvrables selon la taille et la complexite du bassin. Un cuvelage souple se realise en 3 a 5 jours. Nous etablissons un planning precis lors du diagnostic gratuit.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-question" aria-expanded="false">
+          Proposez-vous une garantie sur vos travaux ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Oui. Tous nos travaux d'etancheite beneficient d'une garantie decennale. La membrane armee est garantie 10 ans par le fabricant. Nous sommes assures aupres d'un assureur francais et pouvons fournir une attestation sur simple demande.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-question" aria-expanded="false">
+          Intervenez-vous sur les piscines collectives ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolument. Nous intervenons aussi bien sur les bassins prives que collectifs : residences, campings, hotels, centres aquatiques. Nos produits sont homologues CSTB et Bureau VERITAS pour les etablissements recevant du public.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-4">
+        <button class="faq-question" aria-expanded="false">
+          Le diagnostic est-il vraiment gratuit ?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Oui, le diagnostic initial est entierement gratuit et sans engagement. Nous nous deplacons a votre domicile pour evaluer l'etat de votre bassin, discuter de vos besoins et vous proposer la solution la plus adaptee avec un devis detaille.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CTA FINAL
+     ═══════════════════════════════════ -->
+<section class="cta-final" id="contact">
+  <div class="container">
+    <div class="cta-final-content reveal">
+      <h2>Votre piscine merite<br>un expert</h2>
+      <p>Diagnostic gratuit, devis personnalise. Contactez-nous pour donner une nouvelle vie a votre bassin.</p>
+      <a href="tel:+33674385978" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Appeler maintenant
+      </a>
+      <div class="cta-final-phone">
+        ou ecrivez-nous a <a href="mailto:contact@lafrenchpiscine.fr">contact@lafrenchpiscine.fr</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="../assets/images/logo.webp" alt="La French Piscine" style="height:36px;width:auto;"></div>
+        <div class="footer-legal-name">CARDI PISCINES</div>
+        <p class="footer-desc">Expert en renovation et etancheite de piscines sur la Cote d'Azur. Membrane armee, liner, cuvelage souple — garantie decennale.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-membrane.html">Membrane armee</a></li>
+          <li><a href="#">Liner</a></li>
+          <li><a href="#">Cuvelage souple</a></li>
+          <li><a href="#">Recherche de fuites</a></li>
+          <li><a href="#">Depannage</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="#realisations">Realisations</a></li>
+          <li><a href="#temoignages">Avis clients</a></li>
+          <li><a href="#zone">Zone d'intervention</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33674385978">06 74 38 59 78</a></li>
+          <li><a href="mailto:contact@lafrenchpiscine.fr">contact@lafrenchpiscine.fr</a></li>
+          <li>Alpes-Maritimes (06)</li>
+          <li style="margin-top: 4px; font-size: 12px; color: rgba(255,255,255,0.3);">SIRET 89153972800016</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 La French Piscine — CARDI PISCINES. Tous droits reserves.</p>
+      <div class="footer-social">
+        <!-- Instagram -->
+        <a href="https://instagram.com/lafrenchpiscine" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════
+   JAVASCRIPT
+   ═══════════════════════════════════ */
+
+// Navigation scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY;
+  if (scroll > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = scroll;
+}, { passive: true });
+
+// Mobile menu
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  const spans = navToggle.querySelectorAll('span');
+  if (navLinks.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+
+// Close mobile menu on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    const spans = navToggle.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  });
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-answer').style.maxHeight = null;
+      openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+
+    // Open clicked if was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      const navHeight = nav.offsetHeight;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Membrane Armee — La French Piscine | Etancheite haut de gamme Nice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   LA FRENCH PISCINE — Service Membrane Armee
+   Mediterranean Stone Theme
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --stone: #A3927F;
+  --stone-light: #C4B5A5;
+  --stone-lighter: #D9CEBF;
+  --stone-dark: #8A7D6C;
+  --stone-darker: #6B6054;
+
+  --cream: #FAF6F1;
+  --linen: #F5EDE4;
+  --warm-white: #FFFAF5;
+
+  --sea: #1B4965;
+  --sea-mid: #2C6E8A;
+  --sea-light: #3D8CAA;
+  --sea-pale: #E8F0F5;
+
+  --terracotta: #C4703F;
+  --terracotta-light: #D4945E;
+  --terracotta-pale: #FDF3EB;
+
+  --text: #2D2926;
+  --text-soft: #5C554F;
+  --text-muted: #8A8279;
+
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+  --section-pad: clamp(64px, 10vw, 120px);
+  --container: 1200px;
+
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --shadow-soft: 0 4px 24px rgba(45, 41, 38, 0.06);
+  --shadow-hover: 0 8px 40px rgba(45, 41, 38, 0.12);
+  --shadow-card: 0 2px 12px rgba(45, 41, 38, 0.04);
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.65;
+  font-size: 17px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--sans); cursor: pointer; border: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes tileShift {
+  0% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+  100% { opacity: 0.03; }
+}
+
+@keyframes waterMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ═══════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+}
+
+.nav.scrolled {
+  background: rgba(250, 246, 241, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(45, 41, 38, 0.06);
+  padding: 10px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--warm-white);
+  letter-spacing: -0.02em;
+  transition: color 0.4s;
+}
+
+.nav.scrolled .nav-logo { color: var(--sea); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--terracotta);
+  border-radius: 1px;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: #fff; }
+.nav.scrolled .nav-links a { color: var(--text-soft); }
+.nav.scrolled .nav-links a:hover { color: var(--sea); }
+
+.nav-cta {
+  padding: 10px 24px !important;
+  background: var(--terracotta) !important;
+  color: #fff !important;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: background 0.3s, transform 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--terracotta-light) !important;
+  transform: translateY(-1px);
+}
+
+.nav-cta::after { display: none !important; }
+
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 8px;
+}
+
+.nav-mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--warm-white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s, background 0.4s;
+}
+
+.nav.scrolled .nav-mobile-toggle span { background: var(--text); }
+
+/* ═══════════════════════════════════
+   HERO — Service page variant
+   ═══════════════════════════════════ */
+.hero-service {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--sea);
+  background-image: url('../assets/images/membrane.webp');
+  background-size: cover;
+  background-position: center;
+  padding-top: 80px;
+}
+
+.hero-service::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(45deg, transparent 46%, rgba(163,146,127,0.05) 46%, rgba(163,146,127,0.05) 54%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, rgba(163,146,127,0.05) 46%, rgba(163,146,127,0.05) 54%, transparent 54%),
+    linear-gradient(0deg, rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(160deg, rgba(20,47,71,0.85) 0%, rgba(27,73,101,0.78) 30%, rgba(27,73,101,0.75) 60%, rgba(22,59,85,0.85) 100%);
+  background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px, 100% 100%;
+  animation: tileShift 8s ease-in-out infinite;
+}
+
+/* Warm glow */
+.hero-service::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 50%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(196,112,63,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-service-deco {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(163,146,127,0.1);
+  pointer-events: none;
+}
+
+.hero-service-deco-1 {
+  width: 300px; height: 300px;
+  top: -80px; right: -50px;
+  animation: float 10s ease-in-out infinite;
+}
+
+.hero-service-deco-2 {
+  width: 180px; height: 180px;
+  bottom: -40px; left: 10%;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+.hero-service-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  padding: 80px 0;
+}
+
+.hero-service-text {
+  animation: fadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+
+.hero-service-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.hero-service-breadcrumb a {
+  color: var(--stone-light);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.hero-service-breadcrumb a:hover { opacity: 1; }
+
+.hero-service-breadcrumb span { color: rgba(255,255,255,0.3); }
+
+.hero-service-breadcrumb .current {
+  color: rgba(255,255,255,0.5);
+}
+
+.hero-service-text h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 500;
+  color: var(--warm-white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.hero-service-text h1 em {
+  font-style: italic;
+  color: var(--stone-light);
+}
+
+.hero-service-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.hero-service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.hero-service-tag {
+  padding: 6px 16px;
+  background: rgba(163,146,127,0.12);
+  border: 1px solid rgba(163,146,127,0.18);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--stone-light);
+  letter-spacing: 0.04em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.btn-primary {
+  background: var(--terracotta);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(196,112,63,0.3);
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196,112,63,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--sea);
+  border: 2px solid var(--stone-light);
+}
+
+.btn-outline:hover {
+  background: var(--sea);
+  color: #fff;
+  border-color: var(--sea);
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Hero visual: layers of membrane illustration */
+.hero-service-visual {
+  position: relative;
+  animation: fadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+
+.membrane-illustration {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Three layers representing the membrane */
+.membrane-layer {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.membrane-layer-1 {
+  inset: 12% 8% 28% 12%;
+  background: linear-gradient(135deg, rgba(163,146,127,0.3), rgba(163,146,127,0.15));
+  border: 1px solid rgba(163,146,127,0.25);
+  transform: rotate(-3deg);
+  z-index: 1;
+}
+
+.membrane-layer-2 {
+  inset: 20% 12% 20% 8%;
+  background: linear-gradient(135deg, rgba(196,112,63,0.25), rgba(196,112,63,0.1));
+  border: 1px solid rgba(196,112,63,0.2);
+  z-index: 2;
+}
+
+/* Polyester trame texture */
+.membrane-layer-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.05) 3px, rgba(255,255,255,0.05) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.05) 3px, rgba(255,255,255,0.05) 4px);
+  border-radius: var(--radius-lg);
+}
+
+.membrane-layer-3 {
+  inset: 28% 8% 12% 12%;
+  background: linear-gradient(135deg, rgba(44,110,138,0.3), rgba(27,73,101,0.2));
+  border: 1px solid rgba(44,110,138,0.25);
+  transform: rotate(2deg);
+  z-index: 3;
+}
+
+.membrane-illustration:hover .membrane-layer-1 {
+  transform: rotate(-3deg) translateY(-15px);
+}
+.membrane-illustration:hover .membrane-layer-2 {
+  transform: translateY(0);
+}
+.membrane-illustration:hover .membrane-layer-3 {
+  transform: rotate(2deg) translateY(15px);
+}
+
+/* Floating labels on layers */
+.membrane-label {
+  position: absolute;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 4;
+}
+
+.membrane-label-1 { top: 18%; right: 5%; }
+.membrane-label-2 { top: 48%; left: 2%; }
+.membrane-label-3 { bottom: 18%; right: 5%; }
+
+/* Guarantee badge */
+.membrane-badge {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0 4px 20px rgba(196,112,63,0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+.membrane-badge-num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.membrane-badge-text {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hero-service-curve {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.hero-service-curve svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ═══════════════════════════════════
+   SECTION COMMON
+   ═══════════════════════════════════ */
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+
+.section-tag::before,
+.section-tag::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--stone-light);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 500;
+  color: var(--sea);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 18px;
+  color: var(--text-soft);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════
+   DESCRIPTION
+   ═══════════════════════════════════ */
+.description {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.desc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+.desc-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 500;
+  color: var(--sea);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.desc-text p {
+  font-size: 17px;
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.desc-text p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.desc-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: var(--sea-pale);
+  border-radius: var(--radius);
+  margin-top: 24px;
+  border-left: 4px solid var(--sea);
+}
+
+.desc-highlight-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--sea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.desc-highlight-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.desc-highlight p {
+  font-size: 15px;
+  color: var(--sea);
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Visual: Cross-section diagram */
+.desc-visual {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--linen);
+  border: 1px solid rgba(163,146,127,0.15);
+}
+
+.cross-section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+  gap: 0;
+}
+
+.cross-layer {
+  position: relative;
+  height: 22%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.4s;
+}
+
+.cross-layer:hover { transform: scaleY(1.15); }
+
+.cross-layer-1 {
+  background: linear-gradient(90deg, rgba(27,73,101,0.2), rgba(44,110,138,0.15));
+  color: var(--sea);
+  border: 1px solid rgba(27,73,101,0.2);
+}
+
+.cross-layer-2 {
+  background: linear-gradient(90deg, rgba(196,112,63,0.15), rgba(196,112,63,0.1));
+  color: var(--terracotta);
+  border: 1px solid rgba(196,112,63,0.15);
+  margin: 4px 0;
+}
+
+/* Trame/mesh texture */
+.cross-layer-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(196,112,63,0.06) 2px, rgba(196,112,63,0.06) 3px),
+    repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(196,112,63,0.06) 2px, rgba(196,112,63,0.06) 3px);
+  border-radius: 8px;
+}
+
+.cross-layer-3 {
+  background: linear-gradient(90deg, rgba(27,73,101,0.2), rgba(44,110,138,0.15));
+  color: var(--sea);
+  border: 1px solid rgba(27,73,101,0.2);
+}
+
+.cross-label {
+  position: relative;
+  z-index: 1;
+}
+
+.cross-thickness {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Arrows between layers */
+.cross-arrow {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 2px 0;
+  letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════
+   SPECS
+   ═══════════════════════════════════ */
+.specs {
+  padding: var(--section-pad) 0;
+  background: var(--linen);
+  position: relative;
+}
+
+.specs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(163,146,127,0.05) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(27,73,101,0.04) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.spec-card {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3vw, 36px);
+  text-align: center;
+  border: 1px solid rgba(163,146,127,0.1);
+  transition: all var(--transition);
+}
+
+.spec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(163,146,127,0.25);
+}
+
+.spec-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sea-pale);
+}
+
+.spec-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--sea);
+}
+
+.spec-card h3 {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--sea);
+  margin-bottom: 8px;
+}
+
+.spec-value {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--terracotta);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.spec-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════
+   AVANTAGES
+   ═══════════════════════════════════ */
+.advantages {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+
+.adv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.adv-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(163,146,127,0.1);
+  transition: all var(--transition);
+}
+
+.adv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(163,146,127,0.2);
+}
+
+.adv-num {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--sea), var(--sea-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.adv-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.5vw, 24px);
+  font-weight: 600;
+  color: var(--sea);
+  margin-bottom: 8px;
+}
+
+.adv-card p {
+  font-size: 15px;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════
+   REALISATIONS (Service page)
+   ═══════════════════════════════════ */
+.realisations {
+  padding: var(--section-pad) 0;
+  background: var(--linen);
+}
+
+.real-scroll {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.real-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.real-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.real-card-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.real-card:hover .real-card-bg {
+  transform: scale(1.05);
+}
+
+.real-menton .real-card-bg {
+  background: url('../assets/images/IMG_7364.webp') center/cover no-repeat;
+}
+
+.real-chateauneuf .real-card-bg {
+  background: url('../assets/images/IMG_0467.webp') center/cover no-repeat;
+}
+
+.real-peille .real-card-bg {
+  background: url('../assets/images/IMG_5289.webp') center/cover no-repeat;
+}
+
+.real-aspremont .real-card-bg {
+  background: url('../assets/images/IMG_3724.webp') center/cover no-repeat;
+}
+
+.real-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(27,41,38,0.85) 100%);
+  z-index: 1;
+}
+
+.real-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(16px, 2.5vw, 24px);
+  z-index: 2;
+}
+
+.real-card-city {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--terracotta);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+
+.real-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.real-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ═══════════════════════════════════
+   PARTENAIRES
+   ═══════════════════════════════════ */
+.partners {
+  padding: clamp(48px, 6vw, 80px) 0;
+  background: var(--cream);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.partner-card {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  padding: clamp(20px, 2.5vw, 32px);
+  text-align: center;
+  border: 1px solid rgba(163,146,127,0.1);
+  transition: all var(--transition);
+}
+
+.partner-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: rgba(163,146,127,0.25);
+}
+
+.partner-card-name {
+  font-family: var(--serif);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 600;
+  color: var(--sea);
+  margin-bottom: 4px;
+}
+
+.partner-card-type {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════
+   CONTACT FORM
+   ═══════════════════════════════════ */
+.contact-form-section {
+  padding: var(--section-pad) 0;
+  background: var(--sea);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 30%, rgba(163,146,127,0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(163,146,127,0.04) 0%, transparent 40%),
+    linear-gradient(45deg, transparent 46%, rgba(163,146,127,0.03) 46%, rgba(163,146,127,0.03) 54%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, rgba(163,146,127,0.03) 46%, rgba(163,146,127,0.03) 54%, transparent 54%);
+  background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+  pointer-events: none;
+}
+
+.contact-form-section .section-tag { color: var(--stone-light); }
+.contact-form-section .section-tag::before,
+.contact-form-section .section-tag::after { background: rgba(163,146,127,0.3); }
+.contact-form-section .section-title { color: var(--warm-white); }
+.contact-form-section .section-desc { color: rgba(255,255,255,0.6); }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info {
+  padding-top: 20px;
+}
+
+.contact-info h3 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 500;
+  color: var(--warm-white);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.contact-info > p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.contact-detail-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-detail-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--stone-light);
+}
+
+.contact-detail-text {
+  font-size: 16px;
+  color: rgba(255,255,255,0.8);
+}
+
+.contact-detail-text a {
+  color: var(--stone-light);
+  transition: color 0.3s;
+}
+
+.contact-detail-text a:hover { color: #fff; }
+
+.contact-detail-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Form */
+.contact-form-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: clamp(28px, 4vw, 44px);
+  backdrop-filter: blur(12px);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 16px;
+  transition: border-color 0.3s, background 0.3s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-group select option {
+  background: var(--sea);
+  color: #fff;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--terracotta);
+  background: rgba(255,255,255,0.09);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--terracotta);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  background: var(--terracotta-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196,112,63,0.3);
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+.footer {
+  background: #1A1816;
+  padding: 64px 0 32px;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin-bottom: 4px;
+}
+
+.footer-legal-name {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+}
+
+.footer-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--stone-light);
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.3s;
+}
+
+.footer-col a:hover { color: var(--terracotta-light); }
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.footer-social a:hover { background: var(--terracotta); }
+
+.footer-social svg {
+  width: 18px;
+  height: 18px;
+  fill: rgba(255,255,255,0.5);
+}
+
+.footer-social a:hover svg { fill: #fff; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════ */
+/* ═══════════════════════════════════
+   DEMO RIBBON
+   ═══════════════════════════════════ */
+.demo-ribbon {
+  position: fixed;
+  top: 20px;
+  left: -45px;
+  z-index: 10000;
+  background: linear-gradient(135deg, #A3927F, #C4703F);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile-toggle { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26, 24, 22, 0.97);
+    backdrop-filter: blur(16px);
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 99;
+  }
+
+  .nav-links.open a {
+    color: rgba(255,255,255,0.8);
+    font-size: 20px;
+  }
+
+  .nav-links.open .nav-cta {
+    font-size: 18px !important;
+    padding: 14px 32px !important;
+  }
+
+  .hero-service-content {
+    grid-template-columns: 1fr;
+    padding: 40px 0 60px;
+  }
+
+  .hero-service-visual { order: -1; }
+
+  .membrane-illustration {
+    max-width: 280px;
+    margin-bottom: 20px;
+  }
+
+  .desc-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .adv-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .real-scroll {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .specs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .real-scroll {
+    grid-template-columns: 1fr 1fr;
+  }
+  .partners-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">Theme 3<br>Mediterranean Stone<br>Demonstration</div>
+
+<!-- ═══════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#realisations">Realisations</a></li>
+      <li><a href="index.html#temoignages">Avis</a></li>
+      <li><a href="index.html#zone">Zone</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="#contact-form" class="nav-cta">Devis gratuit</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HERO
+     ═══════════════════════════════════ -->
+<section class="hero-service">
+  <div class="hero-service-deco hero-service-deco-1"></div>
+  <div class="hero-service-deco hero-service-deco-2"></div>
+
+  <div class="container">
+    <div class="hero-service-content">
+      <div class="hero-service-text">
+        <div class="hero-service-breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>&rsaquo;</span>
+          <a href="index.html#services">Services</a>
+          <span>&rsaquo;</span>
+          <span class="current">Membrane armee</span>
+        </div>
+        <h1>Membrane <em>Armee</em></h1>
+        <p class="hero-service-subtitle">L'etancheite haut de gamme pour votre piscine. La solution la plus resistante et durable du marche, posee par nos experts certifies.</p>
+        <div class="hero-service-tags">
+          <span class="hero-service-tag">Norme T54-804</span>
+          <span class="hero-service-tag">Garantie 10 ans</span>
+          <span class="hero-service-tag">Sans sous-traitance</span>
+        </div>
+        <a href="#contact-form" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Demander un devis gratuit
+        </a>
+      </div>
+
+      <div class="hero-service-visual">
+        <div class="membrane-illustration">
+          <div class="membrane-layer membrane-layer-1"></div>
+          <div class="membrane-layer membrane-layer-2"></div>
+          <div class="membrane-layer membrane-layer-3"></div>
+          <span class="membrane-label membrane-label-1">Couche 1 — Resine PVC</span>
+          <span class="membrane-label membrane-label-2">Trame polyester</span>
+          <span class="membrane-label membrane-label-3">Couche 3 — Resine PVC</span>
+          <div class="membrane-badge">
+            <span class="membrane-badge-num">10</span>
+            <span class="membrane-badge-text">Ans</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-service-curve">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FAF6F1"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     DESCRIPTION
+     ═══════════════════════════════════ -->
+<section class="description" id="description">
+  <div class="container">
+    <div class="desc-layout">
+      <div class="desc-text reveal">
+        <h2>La solution d'etancheite la plus resistante du marche</h2>
+        <p>Dotee de qualites exceptionnelles, la <strong>membrane armee</strong> est composee de 3 couches de resine vierge avec une trame armee en polyester. Chaque le est soudee au fer a air chaud selon la <strong>norme T54-804</strong>, garantissant une etancheite parfaite et durable.</p>
+        <p>Contrairement au liner traditionnel, la membrane armee epouse directement la structure du bassin, s'adaptant a toutes les formes, y compris les escaliers, banquettes et formes libres.</p>
+
+        <div class="desc-highlight">
+          <div class="desc-highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div>
+            <p>Garantie fabricant 10 ans sur tous nos travaux de membrane armee. Assurance decennale incluse.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="desc-visual reveal reveal-delay-2">
+        <div class="cross-section">
+          <div class="cross-layer cross-layer-1">
+            <span class="cross-label">Couche superieure — Resine PVC vierge</span>
+            <span class="cross-thickness">~65 1/100</span>
+          </div>
+          <div class="cross-arrow">SOUDURE A CHAUD &darr;</div>
+          <div class="cross-layer cross-layer-2">
+            <span class="cross-label">Trame armee polyester</span>
+            <span class="cross-thickness">Renfort</span>
+          </div>
+          <div class="cross-arrow">&uarr; SOUDURE A CHAUD</div>
+          <div class="cross-layer cross-layer-3">
+            <span class="cross-label">Couche inferieure — Resine PVC vierge</span>
+            <span class="cross-thickness">~65 1/100</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SPECS
+     ═══════════════════════════════════ -->
+<section class="specs" id="specs">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Fiche technique</div>
+      <h2 class="section-title">Specifications</h2>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-card reveal reveal-delay-1">
+        <div class="spec-icon">
+          <!-- Layers icon -->
+          <svg viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 6a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2z"/></svg>
+        </div>
+        <h3>Epaisseur</h3>
+        <div class="spec-value">150-200</div>
+        <p>centiemes d'epaisseur selon le modele choisi</p>
+      </div>
+
+      <div class="spec-card reveal reveal-delay-2">
+        <div class="spec-icon">
+          <!-- Ruler icon -->
+          <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v16h12V4H6zm2 2h2v2H8V6zm0 4h3v2H8v-2zm0 4h2v2H8v-2z"/></svg>
+        </div>
+        <h3>Format rouleaux</h3>
+        <div class="spec-value">20-25m</div>
+        <p>Rouleaux de 1.65 a 2m de largeur</p>
+      </div>
+
+      <div class="spec-card reveal reveal-delay-3">
+        <div class="spec-icon">
+          <!-- Texture icon -->
+          <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
+        </div>
+        <h3>Finitions</h3>
+        <div class="spec-value" style="font-size: clamp(22px, 2.5vw, 30px);">Lisses &amp; 3D</div>
+        <p>Texturees, imitation pierre, mosaique, bois</p>
+      </div>
+
+      <div class="spec-card reveal reveal-delay-4">
+        <div class="spec-icon">
+          <!-- Shape icon -->
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" opacity="0.3"/></svg>
+        </div>
+        <h3>Adaptabilite</h3>
+        <div class="spec-value" style="font-size: clamp(22px, 2.5vw, 30px);">Toute forme</div>
+        <p>Escaliers, banquettes, formes libres, debordement</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     AVANTAGES
+     ═══════════════════════════════════ -->
+<section class="advantages" id="avantages">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Pourquoi choisir</div>
+      <h2 class="section-title">Les avantages de la membrane armee</h2>
+      <p class="section-desc">Une solution premium qui combine performance technique et esthetique pour votre bassin.</p>
+    </div>
+
+    <div class="adv-grid">
+      <div class="adv-card reveal reveal-delay-1">
+        <div class="adv-num">1</div>
+        <div>
+          <h3>Ultra-resistance</h3>
+          <p>Avec ses 3 couches et sa trame polyester, la membrane armee resiste aux UV, aux produits chimiques, aux chocs mecaniques et aux mouvements du terrain. Ideale pour les bassins en zone sismique ou sur terrain argileux.</p>
+        </div>
+      </div>
+
+      <div class="adv-card reveal reveal-delay-2">
+        <div class="adv-num">2</div>
+        <div>
+          <h3>Longevite exceptionnelle</h3>
+          <p>Garantie fabricant 10 ans, la membrane armee conserve ses proprietes pendant 15 a 20 ans avec un entretien courant. Un investissement durable qui evite les renovations frequentes.</p>
+        </div>
+      </div>
+
+      <div class="adv-card reveal reveal-delay-3">
+        <div class="adv-num">3</div>
+        <div>
+          <h3>Esthetique premium</h3>
+          <p>Les finitions 3D Touch (pierre, mosaique, bois) offrent un rendu haut de gamme impossible a obtenir avec un liner classique. Un large choix de teintes pour personnaliser votre bassin.</p>
+        </div>
+      </div>
+
+      <div class="adv-card reveal reveal-delay-4">
+        <div class="adv-num">4</div>
+        <div>
+          <h3>Adaptabilite totale</h3>
+          <p>Renovation ou construction neuve, la membrane armee s'adapte a toutes les formes de bassin : rectangulaire, ovale, forme libre, avec ou sans debordement, escaliers integres.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     REALISATIONS
+     ═══════════════════════════════════ -->
+<section class="realisations" id="realisations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Nos chantiers membrane</div>
+      <h2 class="section-title">Realisations recentes</h2>
+    </div>
+
+    <div class="real-scroll">
+      <div class="real-card real-menton reveal reveal-delay-1">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Menton</span>
+          <h3>3D Touch Prestige</h3>
+          <p>Renolit</p>
+        </div>
+      </div>
+
+      <div class="real-card real-chateauneuf reveal reveal-delay-2">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Chateauneuf</span>
+          <h3>Piscine debordement</h3>
+          <p>Automatisation</p>
+        </div>
+      </div>
+
+      <div class="real-card real-peille reveal reveal-delay-3">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Peille</span>
+          <h3>3D Touch Elegance</h3>
+          <p>Renolit</p>
+        </div>
+      </div>
+
+      <div class="real-card real-aspremont reveal reveal-delay-4">
+        <div class="real-card-bg"></div>
+        <div class="real-card-overlay"></div>
+        <div class="real-card-content">
+          <span class="real-card-city">Aspremont</span>
+          <h3>Membrane CGT Alkor</h3>
+          <p>Alkorplan</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     PARTENAIRES
+     ═══════════════════════════════════ -->
+<section class="partners">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom: 40px;">
+      <div class="section-tag">Nos fournisseurs</div>
+      <h2 class="section-title">Partenaires membrane</h2>
+      <p class="section-desc">Nous travaillons exclusivement avec les leaders europeens de la membrane armee.</p>
+    </div>
+
+    <div class="partners-grid reveal">
+      <div class="partner-card">
+        <img src="../assets/images/renolit.webp" alt="Renolit" style="height:35px;width:auto;margin:0 auto 8px;">
+        <div class="partner-card-type">Alkorplan</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card-name">DLW Delifol</div>
+        <div class="partner-card-type">Flagon</div>
+      </div>
+      <div class="partner-card">
+        <img src="../assets/images/soprema.webp" alt="Soprema" style="height:35px;width:auto;margin:0 auto 8px;">
+        <div class="partner-card-type">Flag Pool</div>
+      </div>
+      <div class="partner-card">
+        <img src="../assets/images/cgt.webp" alt="CGT Alkor" style="height:35px;width:auto;margin:0 auto 8px;">
+        <div class="partner-card-type">Alkorplan</div>
+      </div>
+      <div class="partner-card">
+        <img src="../assets/images/proflex.webp" alt="Proflex" style="height:35px;width:auto;margin:0 auto 8px;">
+        <div class="partner-card-type">Specialist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CONTACT FORM
+     ═══════════════════════════════════ -->
+<section class="contact-form-section" id="contact-form">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <h3>Parlons de votre projet piscine</h3>
+        <p>Remplissez le formulaire ci-contre ou contactez-nous directement. Diagnostic gratuit, devis personnalise, sans engagement.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Telephone</div>
+            <div class="contact-detail-text"><a href="tel:+33674385978">06 74 38 59 78</a></div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-text"><a href="mailto:contact@lafrenchpiscine.fr">contact@lafrenchpiscine.fr</a></div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Zone</div>
+            <div class="contact-detail-text">Alpes-Maritimes (06) &amp; Var (83)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal reveal-delay-2">
+        <form onsubmit="event.preventDefault(); alert('Merci ! Nous vous recontactons rapidement.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nom *</label>
+              <input type="text" id="name" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telephone *</label>
+              <input type="tel" id="phone" placeholder="06 00 00 00 00" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pool-type">Type de bassin</label>
+            <select id="pool-type">
+              <option value="">Selectionnez...</option>
+              <option value="rectangulaire">Rectangulaire</option>
+              <option value="ovale">Ovale / Arrondi</option>
+              <option value="libre">Forme libre</option>
+              <option value="couloir">Couloir de nage</option>
+              <option value="debordement">Debordement</option>
+              <option value="autre">Autre / Je ne sais pas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Votre projet</label>
+            <textarea id="message" placeholder="Decrivez brievement votre projet : dimensions, etat actuel, travaux souhaites..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Envoyer ma demande</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="../assets/images/logo.webp" alt="La French Piscine" style="height:36px;width:auto;"></div>
+        <div class="footer-legal-name">CARDI PISCINES</div>
+        <p class="footer-desc">Expert en renovation et etancheite de piscines sur la Cote d'Azur. Membrane armee, liner, cuvelage souple — garantie decennale.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Membrane armee</a></li>
+          <li><a href="index.html">Liner</a></li>
+          <li><a href="index.html">Cuvelage souple</a></li>
+          <li><a href="index.html">Recherche de fuites</a></li>
+          <li><a href="index.html">Depannage</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="index.html#realisations">Realisations</a></li>
+          <li><a href="index.html#temoignages">Avis clients</a></li>
+          <li><a href="index.html#zone">Zone d'intervention</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33674385978">06 74 38 59 78</a></li>
+          <li><a href="mailto:contact@lafrenchpiscine.fr">contact@lafrenchpiscine.fr</a></li>
+          <li>Alpes-Maritimes (06)</li>
+          <li style="margin-top: 4px; font-size: 12px; color: rgba(255,255,255,0.3);">SIRET 89153972800016</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 La French Piscine — CARDI PISCINES. Tous droits reserves.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/lafrenchpiscine" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════
+   JAVASCRIPT
+   ═══════════════════════════════════ */
+
+// Navigation scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+// Mobile menu
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  const spans = navToggle.querySelectorAll('span');
+  if (navLinks.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    const spans = navToggle.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  });
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      const navHeight = nav.offsetHeight;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

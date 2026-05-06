@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Membrane Armee — La French Piscine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   LA FRENCH PISCINE — Membrane Armee
+   Theme 2: Fresh Riviera Light
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FFFFFF;
+  --bg: #F8FAFB;
+  --surface: #F0F5F9;
+  --surface-alt: #E8EFF5;
+  --blue: #0096D6;
+  --blue-bright: #00B4E6;
+  --blue-deep: #0078AB;
+  --blue-pale: #E6F5FB;
+  --blue-glow: rgba(0, 150, 214, 0.12);
+  --sand: #A3927F;
+  --sand-light: #D4C4B0;
+  --sand-pale: #F0EBE4;
+  --text: #1A1A2E;
+  --text-secondary: #5A6175;
+  --text-muted: #8B92A5;
+  --border: #E2E8F0;
+
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(26, 26, 46, 0.04), 0 1px 2px rgba(26, 26, 46, 0.02);
+  --shadow-md: 0 4px 16px rgba(26, 26, 46, 0.06), 0 1px 3px rgba(26, 26, 46, 0.04);
+  --shadow-lg: 0 12px 40px rgba(26, 26, 46, 0.08), 0 4px 12px rgba(26, 26, 46, 0.04);
+  --shadow-xl: 0 20px 60px rgba(26, 26, 46, 0.1), 0 8px 20px rgba(26, 26, 46, 0.05);
+  --shadow-blue: 0 8px 32px rgba(0, 150, 214, 0.2);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: var(--font-body); }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+@media (min-width: 768px) { .container { padding: 0 var(--space-xl); } }
+@media (min-width: 1200px) { .container { padding: 0 var(--space-2xl); } }
+
+/* ─── DEMO RIBBON ─── */
+.demo-ribbon {
+  position: fixed;
+  top: 20px;
+  left: -45px;
+  z-index: 10000;
+  background: linear-gradient(135deg, #0096D6, #00B4E6);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* ─── HERO SERVICE BACKGROUND ─── */
+.hero-service-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/membrane.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.hero-service-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* ─── MEMBRANE PROJECT VISUAL IMAGE ─── */
+.membrane-project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── PARTNER LOGO IMAGE ─── */
+.partner-logo img {
+  height: 35px;
+  width: auto;
+  display: block;
+}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── NAVIGATION ─── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  transition: box-shadow 0.3s var(--ease);
+}
+.nav.scrolled { box-shadow: 0 1px 20px rgba(26, 26, 46, 0.06); }
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 150, 214, 0.25);
+}
+.nav-logo svg { width: 22px; height: 22px; }
+.nav-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.nav-name span { color: var(--blue); }
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s var(--ease);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  border-radius: var(--radius-full);
+  transition: width 0.3s var(--ease);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--blue); }
+.nav-links a.active::after { width: 100%; }
+.nav-cta {
+  display: none;
+  align-items: center;
+  gap: var(--space-md);
+}
+.nav-phone {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-phone svg { width: 16px; height: 16px; color: var(--blue); }
+.btn-nav {
+  padding: 10px 20px;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s var(--ease);
+  box-shadow: var(--shadow-sm);
+}
+.btn-nav:hover {
+  background: var(--blue-bright);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-1px);
+}
+.nav-mobile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+.nav-mobile-btn:hover { background: var(--surface); }
+.nav-mobile-btn svg { width: 24px; height: 24px; color: var(--text); }
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .nav-cta { display: flex; }
+  .nav-mobile-btn { display: none; }
+}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(26, 26, 46, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s var(--ease);
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  background: var(--white);
+  padding: var(--space-xl);
+  transform: translateX(100%);
+  transition: transform 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+.mobile-menu-close {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+}
+.mobile-menu-close:hover { background: var(--surface); }
+.mobile-menu-close svg { width: 24px; height: 24px; }
+.mobile-menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.mobile-menu-links a {
+  display: block;
+  padding: var(--space-md);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  border-radius: var(--radius-md);
+  transition: background 0.2s;
+}
+.mobile-menu-links a:hover { background: var(--surface); }
+.mobile-menu-cta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── HERO (Service page) ─── */
+.hero-service {
+  position: relative;
+  padding: calc(72px + var(--space-3xl)) 0 var(--space-3xl);
+  background: linear-gradient(180deg, var(--white) 0%, var(--bg) 100%);
+  overflow: hidden;
+  text-align: center;
+}
+.hero-service::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 150, 214, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Decorative membrane layers */
+.hero-layers {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 300px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.hero-layer {
+  position: absolute;
+  border-radius: var(--radius-xl);
+  border: 2px solid;
+}
+.hero-layer:nth-child(1) {
+  width: 280px;
+  height: 180px;
+  top: 0;
+  right: 0;
+  border-color: rgba(0, 150, 214, 0.15);
+  background: rgba(0, 150, 214, 0.03);
+  transform: rotate(-6deg);
+  animation: layerFloat 8s ease-in-out infinite;
+}
+.hero-layer:nth-child(2) {
+  width: 240px;
+  height: 160px;
+  top: 30px;
+  right: 30px;
+  border-color: rgba(0, 150, 214, 0.2);
+  background: rgba(0, 150, 214, 0.04);
+  transform: rotate(-3deg);
+  animation: layerFloat 8s ease-in-out infinite 0.5s;
+}
+.hero-layer:nth-child(3) {
+  width: 200px;
+  height: 140px;
+  top: 60px;
+  right: 60px;
+  border-color: rgba(0, 150, 214, 0.25);
+  background: rgba(0, 180, 230, 0.06);
+  transform: rotate(0deg);
+  animation: layerFloat 8s ease-in-out infinite 1s;
+}
+@keyframes layerFloat {
+  0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0); }
+  50% { transform: rotate(var(--rot, 0deg)) translateY(-8px); }
+}
+.hero-layer:nth-child(1) { --rot: -6deg; }
+.hero-layer:nth-child(2) { --rot: -3deg; }
+.hero-layer:nth-child(3) { --rot: 0deg; }
+
+.hero-service .hero-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+}
+.hero-breadcrumb a {
+  color: var(--blue);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.hero-breadcrumb a:hover { color: var(--blue-deep); }
+.hero-breadcrumb svg { width: 14px; height: 14px; }
+
+.hero-service h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+.hero-service h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-service .hero-sub {
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── BUTTONS (shared) ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 16px rgba(0, 150, 214, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 150, 214, 0.4);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary svg { width: 18px; height: 18px; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 16px 32px;
+  background: var(--white);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  transition: all 0.3s var(--ease);
+}
+.btn-secondary svg { width: 18px; height: 18px; color: var(--blue); }
+.btn-secondary:hover {
+  border-color: var(--blue);
+  background: var(--blue-pale);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── SECTION UTILITIES ─── */
+.section { padding: var(--space-4xl) 0; }
+.section-alt { background: var(--bg); }
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-md);
+}
+.section-label::before,
+.section-label::after {
+  content: '';
+  width: 20px;
+  height: 1.5px;
+  background: var(--blue);
+  opacity: 0.4;
+  border-radius: 1px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.section-desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: var(--space-md) auto 0;
+  line-height: 1.7;
+}
+
+/* ─── SPECS (2 columns) ─── */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .specs-grid { grid-template-columns: 1fr 1fr; gap: var(--space-3xl); }
+}
+
+.specs-narrative h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
+}
+.specs-narrative p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-md);
+}
+.specs-narrative p:last-child { margin-bottom: 0; }
+
+.specs-technical {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+.specs-technical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+}
+.specs-technical h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border);
+  gap: var(--space-md);
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.spec-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+}
+.spec-badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  background: var(--blue-pale);
+  color: var(--blue-deep);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ─── ADVANTAGES (4 horizontal cards) ─── */
+.advantages-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+@media (min-width: 768px) {
+  .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) {
+  .advantages-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.advantage-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: all 0.4s var(--ease);
+  position: relative;
+}
+.advantage-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+  border-radius: 3px 3px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.advantage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(0, 150, 214, 0.15);
+}
+.advantage-card:hover::after { opacity: 1; }
+
+.advantage-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-pale), rgba(0, 180, 230, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+  transition: transform 0.4s var(--ease-spring);
+}
+.advantage-card:hover .advantage-icon { transform: scale(1.1) rotate(-3deg); }
+.advantage-icon svg { width: 28px; height: 28px; }
+
+.advantage-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.01em;
+}
+.advantage-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── PROCESS TIMELINE ─── */
+.process-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  position: relative;
+}
+@media (min-width: 768px) {
+  .process-steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* Connecting line */
+@media (min-width: 768px) {
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: calc(12.5% + 16px);
+    right: calc(12.5% + 16px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-bright), var(--blue));
+    opacity: 0.2;
+    z-index: 0;
+  }
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.process-number {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--blue);
+  transition: all 0.4s var(--ease);
+  position: relative;
+}
+.process-step:hover .process-number {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: var(--shadow-blue);
+  transform: scale(1.1);
+}
+.process-number::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 150, 214, 0.2);
+}
+
+.process-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.01em;
+}
+.process-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+/* ─── REALISATIONS MEMBRANE ─── */
+.membrane-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+@media (min-width: 768px) {
+  .membrane-projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) {
+  .membrane-projects-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.membrane-project {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+.membrane-project:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: transparent;
+}
+
+.membrane-project-visual {
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+.membrane-project-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255,255,255,0.15) 45%,
+    transparent 55%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease);
+}
+.membrane-project:hover .membrane-project-visual::after {
+  transform: translateX(100%);
+}
+
+.mp-visual--menton {
+  background: linear-gradient(135deg, #0096D6, #00B4E6, #7DD3FC);
+}
+.mp-visual--chateauneuf {
+  background: linear-gradient(135deg, #0078AB, #0096D6, #38BDF8);
+}
+.mp-visual--peille {
+  background: linear-gradient(135deg, #A3927F, #D4C4B0, #0096D6);
+}
+.mp-visual--aspremont {
+  background: linear-gradient(135deg, #00B4E6, #0096D6, #0078AB);
+}
+
+/* Pool shape overlays */
+.membrane-project-visual svg {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0.2;
+  width: 120px;
+  height: 120px;
+  transition: opacity 0.3s var(--ease);
+}
+.membrane-project:hover .membrane-project-visual svg { opacity: 0.35; }
+
+.membrane-project-body {
+  padding: var(--space-lg);
+}
+.membrane-project-city {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.membrane-project-type {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-sm);
+}
+.membrane-project-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── PARTNERS ─── */
+.partners-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg) var(--space-2xl);
+}
+.partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: transform 0.3s var(--ease);
+}
+.partner-item:hover { transform: translateY(-4px); }
+.partner-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+  padding: var(--space-sm);
+  transition: all 0.3s var(--ease);
+}
+.partner-item:hover .partner-logo {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-md);
+}
+.partner-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ─── FORM ─── */
+.form-section {
+  padding: var(--space-4xl) 0;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.form-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 150, 214, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.form-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.form-wrapper h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+.form-wrapper > p {
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+@media (min-width: 768px) {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+  .form-grid .form-group--full { grid-column: 1 / -1; }
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.01em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238B92A5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+}
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: var(--space-lg);
+}
+.form-submit .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: 18px 32px;
+  font-size: 17px;
+}
+@media (min-width: 768px) {
+  .form-submit .btn-primary { width: auto; min-width: 280px; }
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--text);
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+@media (min-width: 768px) {
+  .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: var(--space-3xl); }
+}
+.footer-brand-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+}
+.footer-brand-name span { color: var(--blue-bright); }
+.footer-brand-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+.footer-col-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-md);
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-links svg { width: 14px; height: 14px; }
+.footer-bottom {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-md);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.footer-social {
+  display: flex;
+  gap: var(--space-md);
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+}
+.footer-social a:hover { background: var(--blue); transform: translateY(-2px); }
+.footer-social svg { width: 16px; height: 16px; color: rgba(255,255,255,0.7); }
+.footer-social a:hover svg { color: var(--white); }
+
+</style>
+</head>
+<body>
+
+<!-- ═══ DEMO RIBBON ═══ -->
+<div class="demo-ribbon">Theme 2<br>Fresh Riviera Light<br>Démonstration</div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#realisations">Realisations</a></li>
+      <li><a href="index.html#temoignages">Avis</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="service-membrane.html" class="active">Membrane</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:0674385978" class="nav-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        06 74 38 59 78
+      </a>
+      <a href="#devis" class="btn-nav">Devis gratuit</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Ouvrir le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="menuClose" aria-label="Fermer le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <ul class="mobile-menu-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#realisations">Realisations</a></li>
+      <li><a href="index.html#temoignages">Avis clients</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="mobile-menu-cta">
+      <a href="#devis" class="btn-primary" style="justify-content:center;">Devis gratuit</a>
+      <a href="tel:0674385978" style="text-align:center;font-size:16px;font-weight:600;color:var(--text);">06 74 38 59 78</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-service">
+  <div class="hero-service-bg"></div>
+  <div class="hero-layers">
+    <div class="hero-layer"></div>
+    <div class="hero-layer"></div>
+    <div class="hero-layer"></div>
+  </div>
+  <div class="container">
+    <div class="hero-breadcrumb reveal">
+      <a href="index.html">Accueil</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Membrane Armee</span>
+    </div>
+    <h1 class="reveal reveal-delay-1"><em>Membrane Armee</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">La solution d'etancheite la plus resistante du marche. PVC arme sur-mesure, adaptee a toutes les formes, garantie 10 ans.</p>
+    <div class="reveal reveal-delay-3" style="display:flex;flex-wrap:wrap;gap:var(--space-md);justify-content:center;">
+      <a href="#devis" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Obtenir un devis
+      </a>
+      <a href="tel:0674385978" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        06 74 38 59 78
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SPECS TECHNIQUES ═══ -->
+<section class="section" id="specs">
+  <div class="container">
+    <div class="specs-grid">
+      <div class="specs-narrative reveal">
+        <h3>L'etancheite premium pour votre bassin</h3>
+        <p>La membrane armee est un revetement PVC renforce par une trame en polyester haute tenacite. Contrairement au liner classique, elle est soudee directement sur site, ce qui permet une adaptation parfaite a toutes les geometries de bassin, meme les plus complexes.</p>
+        <p>Composee de 3 couches de resine PVC et d'un treillis polyester, elle offre une resistance mecanique exceptionnelle. Son epaisseur de 150 a 200 centiemes la rend quasi-insensible aux chocs, aux griffures et aux variations de temperature.</p>
+        <p>Conforme a la norme T54-804, la membrane armee est la reference des professionnels pour les piscines publiques comme privees. C'est la solution que nous recommandons pour une etancheite durable et sans compromis.</p>
+      </div>
+      <div class="specs-technical reveal reveal-delay-1">
+        <h4>Fiche technique</h4>
+        <div class="spec-row">
+          <span class="spec-label">Epaisseur</span>
+          <span class="spec-value">150 - 200 centiemes</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Composition</span>
+          <span class="spec-value">3 couches resine PVC</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Armature</span>
+          <span class="spec-value">Trame polyester HT</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Norme</span>
+          <span class="spec-badge">T54-804</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Format rouleaux</span>
+          <span class="spec-value">20-25m x 1.65-2m</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Pose</span>
+          <span class="spec-value">Soudure air chaud sur site</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Garantie</span>
+          <span class="spec-badge">10 ans</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AVANTAGES ═══ -->
+<section class="section section-alt" id="avantages">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Avantages</div>
+      <h2 class="section-title">Pourquoi choisir la membrane armee</h2>
+    </div>
+    <div class="advantages-grid">
+      <div class="advantage-card reveal">
+        <div class="advantage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096D6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h3 class="advantage-title">Ultra-resistante</h3>
+        <p class="advantage-desc">3 couches de resine PVC renforcees par une trame polyester. Resistance aux chocs, UV, chlore et produits chimiques.</p>
+      </div>
+      <div class="advantage-card reveal reveal-delay-1">
+        <div class="advantage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096D6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="advantage-title">Sur-mesure toutes formes</h3>
+        <p class="advantage-desc">Soudee sur site a l'air chaud, elle epouse parfaitement chaque recoin : escaliers, banquettes, formes libres, couloirs de nage.</p>
+      </div>
+      <div class="advantage-card reveal reveal-delay-2">
+        <div class="advantage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096D6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+        </div>
+        <h3 class="advantage-title">Finitions lisses ou texturees</h3>
+        <p class="advantage-desc">Large gamme de coloris, motifs et textures : uni, mosaique, pierre naturelle, 3D Touch. Design personnalise garanti.</p>
+      </div>
+      <div class="advantage-card reveal reveal-delay-3">
+        <div class="advantage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096D6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="advantage-title">Garantie 10 ans</h3>
+        <p class="advantage-desc">Etancheite garantie une decennie. Duree de vie reelle superieure a 15 ans avec un entretien standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Notre methode</div>
+      <h2 class="section-title">Un projet en 4 etapes</h2>
+      <p class="section-desc">De la premiere visite a la mise en eau, un accompagnement complet et transparent.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-number">1</div>
+        <h3 class="process-title">Diagnostic</h3>
+        <p class="process-desc">Visite sur site, etat du bassin, prise de cotes, identification des problemes et des contraintes techniques.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-number">2</div>
+        <h3 class="process-title">Preconisation</h3>
+        <p class="process-desc">Choix du revetement, coloris, finitions. Devis detaille avec planning d'intervention precis.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-number">3</div>
+        <h3 class="process-title">Pose</h3>
+        <p class="process-desc">Preparation du support, decoupe sur-mesure, soudure a l'air chaud. Controle qualite a chaque etape.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-number">4</div>
+        <h3 class="process-title">Reception</h3>
+        <p class="process-desc">Test d'etancheite, mise en eau, verification de l'ensemble. Remise du certificat de garantie decennale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REALISATIONS MEMBRANE ═══ -->
+<section class="section section-alt" id="realisations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Realisations</div>
+      <h2 class="section-title">Nos chantiers membrane</h2>
+    </div>
+    <div class="membrane-projects-grid">
+      <div class="membrane-project reveal">
+        <div class="membrane-project-visual mp-visual--menton">
+          <img src="../assets/images/IMG_7364.webp" alt="Piscine membrane Menton">
+        </div>
+        <div class="membrane-project-body">
+          <div class="membrane-project-type">3D Touch Prestige</div>
+          <div class="membrane-project-city">Menton</div>
+          <p class="membrane-project-desc">Renovation d'un bassin carrele en membrane 3D Touch. Finition mosaique haut de gamme, aspect luxueux.</p>
+        </div>
+      </div>
+      <div class="membrane-project reveal reveal-delay-1">
+        <div class="membrane-project-visual mp-visual--chateauneuf">
+          <img src="../assets/images/IMG_0467.webp" alt="Piscine membrane Chateauneuf">
+        </div>
+        <div class="membrane-project-body">
+          <div class="membrane-project-type">Membrane unie</div>
+          <div class="membrane-project-city">Chateauneuf</div>
+          <p class="membrane-project-desc">Bassin ovale, membrane unie bleu clair. Integration parfaite avec les margelles en pierre naturelle.</p>
+        </div>
+      </div>
+      <div class="membrane-project reveal reveal-delay-2">
+        <div class="membrane-project-visual mp-visual--peille">
+          <img src="../assets/images/IMG_5289.webp" alt="Piscine membrane Peille">
+        </div>
+        <div class="membrane-project-body">
+          <div class="membrane-project-type">Renovation mosaique</div>
+          <div class="membrane-project-city">Peille</div>
+          <p class="membrane-project-desc">Passage mosaique vers membrane. Chemisage non destructif des canalisations. Zero demolition.</p>
+        </div>
+      </div>
+      <div class="membrane-project reveal reveal-delay-3">
+        <div class="membrane-project-visual mp-visual--aspremont">
+          <img src="../assets/images/IMG_3724.webp" alt="Piscine membrane Aspremont">
+        </div>
+        <div class="membrane-project-body">
+          <div class="membrane-project-type">Couloir + spa</div>
+          <div class="membrane-project-city">Aspremont</div>
+          <p class="membrane-project-desc">Couloir de nage avec spa integre. Membrane soudee sur les deux bassins, jonction etanche parfaite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTENAIRES ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Partenaires</div>
+      <h2 class="section-title">Des marques de reference</h2>
+      <p class="section-desc">Nous travaillons exclusivement avec les leaders europeens du revetement piscine.</p>
+    </div>
+    <div class="partners-list reveal">
+      <div class="partner-item">
+        <div class="partner-logo"><img src="../assets/images/renolit.webp" alt="Renolit Alkorplan"></div>
+        <span class="partner-name">Renolit / Alkorplan</span>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo"><img src="../assets/images/soprema.webp" alt="Soprema"></div>
+        <span class="partner-name">Soprema</span>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo"><img src="../assets/images/cgt.webp" alt="CGT Alkor"></div>
+        <span class="partner-name">CGT Alkor</span>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo"><img src="../assets/images/proflex.webp" alt="Proflex"></div>
+        <span class="partner-name">Proflex</span>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo">DLW<br>Delifol</div>
+        <span class="partner-name">DLW Delifol</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORMULAIRE ═══ -->
+<section class="form-section section-alt" id="devis">
+  <div class="container">
+    <div class="form-wrapper">
+      <h2 class="reveal">Obtenir un devis gratuit</h2>
+      <p class="reveal reveal-delay-1">Decrivez votre projet, nous vous recontactons sous 24h.</p>
+      <form class="reveal reveal-delay-2" onsubmit="event.preventDefault(); alert('Merci ! Ce formulaire est une maquette de demonstration.');">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nom">Nom complet</label>
+            <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required>
+          </div>
+          <div class="form-group">
+            <label for="tel">Telephone</label>
+            <input type="tel" id="tel" name="tel" placeholder="06 12 34 56 78" required>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="bassin">Type de bassin</label>
+            <select id="bassin" name="bassin">
+              <option value="" disabled selected>Selectionnez le type de bassin</option>
+              <option value="beton">Beton</option>
+              <option value="coque">Coque polyester</option>
+              <option value="parpaings">Parpaings</option>
+              <option value="metal">Metal / Bois</option>
+              <option value="autre">Autre / Je ne sais pas</option>
+            </select>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="message">Votre projet</label>
+            <textarea id="message" name="message" placeholder="Decrivez votre bassin, les dimensions approximatives, et le type de travaux souhaites..."></textarea>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Obtenir un devis gratuit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="index.html" class="nav-logo" style="display:inline-block;margin-bottom:var(--space-md);">
+          <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+        </a>
+        <p class="footer-brand-sub">
+          CARDI PISCINES<br>
+          SIRET 89153972800016<br><br>
+          Expert en renovation et etancheite de piscines<br>
+          Alpes-Maritimes (06) & Var (83)
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="service-membrane.html">Membrane armee</a></li>
+          <li><a href="index.html#services">Liner</a></li>
+          <li><a href="index.html#services">Cuvelage souple</a></li>
+          <li><a href="index.html#services">Recherche de fuites</a></li>
+          <li><a href="index.html#services">Depannage</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li>
+            <a href="tel:0674385978">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              06 74 38 59 78
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contact@lafrenchpiscine.fr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              contact@lafrenchpiscine.fr
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/lafrenchpiscine" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+              @lafrenchpiscine
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CARDI PISCINES — La French Piscine. Tous droits reserves.</span>
+      <div class="footer-social">
+        <a href="https://instagram.com/lafrenchpiscine" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── Intersection Observer for reveals ─── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ─── Nav scroll effect ─── */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+/* ─── Mobile menu ─── */
+const mobileMenu = document.getElementById('mobileMenu');
+document.getElementById('menuOpen').addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('menuClose').addEventListener('click', closeMenu);
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMenu();
+});
+document.querySelectorAll('.mobile-menu-links a').forEach(a => {
+  a.addEventListener('click', closeMenu);
+});
+
+/* ─── Smooth scroll for anchor links ─── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const navHeight = document.getElementById('nav').offsetHeight;
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

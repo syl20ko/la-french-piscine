@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>La French Piscine — Expert Piscines Alpes-Maritimes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LA FRENCH PISCINE — Premium Dark Pool Theme
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Deep navy base */
+  --deep-1: #0B1D2E;
+  --deep-2: #0F2B3C;
+  --deep-3: #132F42;
+  --deep-4: #1A3A50;
+  --deep-5: #0A1922;
+
+  /* Luminous pool blue */
+  --pool: #00A8E8;
+  --pool-light: #40C4FF;
+  --pool-glow: #00D4FF;
+  --pool-pale: rgba(0, 168, 232, 0.12);
+  --pool-dim: rgba(0, 168, 232, 0.06);
+
+  /* Warm sand accent */
+  --sand: #A3927F;
+  --sand-light: #C4B8A9;
+  --sand-gold: #BFA882;
+  --sand-pale: rgba(163, 146, 127, 0.15);
+
+  /* Text */
+  --text-bright: #F0F4F8;
+  --text-medium: #B8C5D3;
+  --text-muted: #7A8C9E;
+  --text-dim: #4A5C6E;
+
+  /* Typography */
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--text-bright);
+  background: var(--deep-1);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--pool-light);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+
+a:hover {
+  color: var(--pool-glow);
+}
+
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   WATER ANIMATION BACKGROUND (CSS only)
+   ============================================================ */
+.water-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.water-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse 600px 300px at 20% 50%, rgba(0, 168, 232, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 80% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 250px at 60% 80%, rgba(0, 168, 232, 0.025) 0%, transparent 60%);
+  animation: waterDrift 25s ease-in-out infinite alternate;
+}
+
+.water-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 100px,
+      rgba(0, 168, 232, 0.015) 100px,
+      rgba(0, 168, 232, 0.015) 101px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 100px,
+      rgba(0, 168, 232, 0.01) 100px,
+      rgba(0, 168, 232, 0.01) 101px
+    );
+  animation: waterShimmer 15s ease-in-out infinite alternate;
+}
+
+@keyframes waterDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(30px, -20px) rotate(2deg); }
+}
+
+@keyframes waterShimmer {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 0.4; }
+}
+
+/* ============================================================
+   CAUSTICS OVERLAY (light refraction effect)
+   ============================================================ */
+.caustics {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.caustics::before,
+.caustics::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(ellipse 80px 120px at 25% 35%, rgba(0, 212, 255, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 100px 60px at 55% 65%, rgba(0, 168, 232, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 70px 90px at 75% 25%, rgba(64, 196, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 90px 70px at 40% 80%, rgba(0, 168, 232, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 60px 100px at 85% 55%, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+}
+
+.caustics::before {
+  animation: causticsMove1 20s ease-in-out infinite;
+}
+
+.caustics::after {
+  animation: causticsMove2 25s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes causticsMove1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(40px, -30px) scale(1.05); }
+  66%      { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+@keyframes causticsMove2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50%      { transform: translate(-30px, 15px) scale(1.03) rotate(3deg); }
+}
+
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container--narrow {
+  max-width: 900px;
+}
+
+section {
+  position: relative;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.5s var(--ease);
+  background: transparent;
+}
+
+.nav.scrolled {
+  background: rgba(11, 29, 46, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 rgba(0, 168, 232, 0.1);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.nav-logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--pool);
+  transition: width 0.4s var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--text-bright);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--deep-1) !important;
+  background: var(--sand);
+  padding: 10px 22px !important;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+  transition: all 0.3s var(--ease) !important;
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+.nav-cta:hover {
+  background: var(--sand-light) !important;
+  color: var(--deep-1) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-bright);
+  transition: all 0.3s var(--ease);
+  border-radius: 2px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    background: rgba(11, 29, 46, 0.98);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 80px 32px 32px;
+    gap: 0;
+    transition: right 0.4s var(--ease);
+    border-left: 1px solid rgba(0, 168, 232, 0.1);
+  }
+  .nav-links.open { right: 0; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 16px 0 !important;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-cta {
+    margin-top: 16px;
+    text-align: center;
+    display: block !important;
+  }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px 80px;
+}
+
+/* Animated water surface */
+.hero-water {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Background photo */
+.hero-water {
+  background: url('../assets/images/piscinefrontpage.webp') center/cover no-repeat;
+}
+
+/* Dark overlay + gradient base */
+.hero-water::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0, 168, 232, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 30% 70%, rgba(0, 212, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 70% 30%, rgba(64, 196, 255, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(10, 25, 34, 0.75) 0%, rgba(11, 29, 46, 0.7) 30%, rgba(15, 43, 60, 0.65) 70%, rgba(19, 47, 66, 0.8) 100%);
+}
+
+/* Animated light caustics on the hero */
+.hero-caustics {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-caustics .caustic-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  filter: blur(30px);
+}
+
+.hero-caustics .c1 {
+  width: 500px; height: 500px;
+  top: 10%; left: 5%;
+  animation: float1 18s ease-in-out infinite;
+}
+
+.hero-caustics .c2 {
+  width: 350px; height: 350px;
+  top: 40%; right: 10%;
+  animation: float2 22s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(0, 168, 232, 0.06) 0%, transparent 70%);
+}
+
+.hero-caustics .c3 {
+  width: 400px; height: 250px;
+  bottom: 10%; left: 30%;
+  animation: float3 20s ease-in-out infinite;
+  border-radius: 40% 60% 50% 50%;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(60px, -40px) scale(1.1); opacity: 1; }
+  66% { transform: translate(-30px, 30px) scale(0.95); opacity: 0.8; }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50px, 30px) scale(1.15); opacity: 0.9; }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.7; }
+  50% { transform: translate(40px, -20px) rotate(10deg); opacity: 1; }
+}
+
+/* Surface light reflection line */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.3) 20%,
+    rgba(64, 196, 255, 0.6) 50%,
+    rgba(0, 212, 255, 0.3) 80%,
+    transparent 100%
+  );
+  animation: surfaceLight 8s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes surfaceLight {
+  0%, 100% { transform: translateX(-10%); opacity: 0.5; }
+  50%      { transform: translateX(10%); opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 850px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(0, 168, 232, 0.1);
+  border: 1px solid rgba(0, 168, 232, 0.2);
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--pool-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--pool);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--text-bright);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--pool-light);
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-medium);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--pool) 0%, #0090CC 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 168, 232, 0.3), 0 0 60px rgba(0, 168, 232, 0.1);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 168, 232, 0.4), 0 0 80px rgba(0, 168, 232, 0.15);
+  color: #fff;
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease);
+}
+
+.btn--primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--text-bright);
+  border: 1px solid rgba(240, 244, 248, 0.2);
+}
+
+.btn--outline:hover {
+  border-color: var(--sand);
+  color: var(--sand-light);
+  background: rgba(163, 146, 127, 0.08);
+}
+
+.btn--sand {
+  background: var(--sand);
+  color: var(--deep-1);
+}
+
+.btn--sand:hover {
+  background: var(--sand-light);
+  transform: translateY(-2px);
+  color: var(--deep-1);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.hero-phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 15px;
+  color: var(--text-medium);
+  justify-content: center;
+}
+
+.hero-phone a {
+  color: var(--text-bright);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero-phone-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--pool);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: scrollBounce 2.5s ease-in-out infinite;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--pool), transparent);
+  animation: scrollLine 2.5s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+@keyframes scrollLine {
+  0%   { opacity: 1; height: 40px; }
+  50%  { opacity: 0.3; height: 20px; }
+  100% { opacity: 1; height: 40px; }
+}
+
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+.section-pad {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  .section-pad { padding: 64px 0; }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pool);
+  margin-bottom: 16px;
+  position: relative;
+  padding: 0 16px;
+}
+
+.section-tag::before,
+.section-tag::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pool));
+}
+
+.section-tag::before { right: 100%; }
+.section-tag::after  { left: 100%; background: linear-gradient(90deg, var(--pool), transparent); }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: var(--text-medium);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Separator */
+.section-sep {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 168, 232, 0.15) 20%,
+    rgba(0, 168, 232, 0.25) 50%,
+    rgba(0, 168, 232, 0.15) 80%,
+    transparent 100%
+  );
+  border: none;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services {
+  background: linear-gradient(180deg, var(--deep-1) 0%, var(--deep-2) 100%);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+.service-card {
+  background: linear-gradient(145deg,
+    rgba(15, 43, 60, 0.6) 0%,
+    rgba(11, 29, 46, 0.8) 100%
+  );
+  border: 1px solid rgba(0, 168, 232, 0.08);
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s var(--ease);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--pool), transparent);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+}
+
+.service-card:hover {
+  border-color: rgba(0, 168, 232, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 168, 232, 0.05);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--pool-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--pool);
+}
+
+.service-card h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  font-size: 15px;
+  color: var(--text-medium);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.service-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--sand-pale);
+  color: var(--sand-light);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   REALISATIONS
+   ============================================================ */
+.realisations {
+  background: var(--deep-1);
+}
+
+.real-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .real-grid { grid-template-columns: 1fr; }
+}
+
+.real-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+  transition: all 0.5s var(--ease);
+}
+
+.real-card:hover {
+  transform: scale(1.02);
+}
+
+/* CSS-only visual placeholder for each project */
+.real-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.real-card:nth-child(1) .real-visual {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(0, 168, 232, 0.2) 0%, transparent 70%),
+    linear-gradient(135deg, #0F2B3C 0%, #1A3A50 40%, #0F2B3C 100%);
+}
+
+.real-card:nth-child(2) .real-visual {
+  background:
+    radial-gradient(ellipse 60% 40% at 40% 50%, rgba(64, 196, 255, 0.15) 0%, transparent 60%),
+    linear-gradient(160deg, #132F42 0%, #0B1D2E 50%, #1A3A50 100%);
+}
+
+.real-card:nth-child(3) .real-visual {
+  background:
+    radial-gradient(ellipse 50% 60% at 60% 40%, rgba(0, 212, 255, 0.12) 0%, transparent 60%),
+    linear-gradient(200deg, #1A3A50 0%, #0F2B3C 50%, #0B1D2E 100%);
+}
+
+.real-card:nth-child(4) .real-visual {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0, 168, 232, 0.18) 0%, transparent 60%),
+    linear-gradient(145deg, #0B1D2E 0%, #132F42 50%, #0F2B3C 100%);
+}
+
+/* Pool shape SVG patterns */
+.real-visual::after {
+  content: '';
+  position: absolute;
+  inset: 15%;
+  border: 1px solid rgba(0, 168, 232, 0.15);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: poolShape 15s ease-in-out infinite alternate;
+}
+
+.real-card:nth-child(2) .real-visual::after {
+  border-radius: 10% 10% 10% 10%;
+  inset: 20% 10%;
+}
+
+.real-card:nth-child(3) .real-visual::after {
+  border-radius: 20% 50% 50% 20% / 50% 50% 50% 50%;
+  inset: 18%;
+}
+
+.real-card:nth-child(4) .real-visual::after {
+  clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%);
+  border: none;
+  background: rgba(0, 168, 232, 0.08);
+  inset: 18%;
+  border-radius: 0;
+}
+
+@keyframes poolShape {
+  0%   { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(3deg) scale(1.02); }
+}
+
+.real-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg,
+    transparent 30%,
+    rgba(11, 29, 46, 0.7) 70%,
+    rgba(11, 29, 46, 0.95) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+}
+
+.real-location {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pool);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.real-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+
+.real-desc {
+  font-size: 14px;
+  color: var(--text-medium);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials {
+  background: linear-gradient(180deg, var(--deep-2) 0%, var(--deep-1) 100%);
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .testi-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+.testi-card {
+  background: rgba(15, 43, 60, 0.4);
+  border: 1px solid rgba(0, 168, 232, 0.06);
+  border-radius: 16px;
+  padding: 36px 28px;
+  position: relative;
+}
+
+.testi-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+
+.testi-star {
+  width: 16px;
+  height: 16px;
+  color: var(--sand-gold);
+}
+
+.testi-quote {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid rgba(0, 168, 232, 0.2);
+}
+
+.testi-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.testi-source {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   PARTNERS
+   ============================================================ */
+.partners {
+  background: var(--deep-1);
+  padding: 60px 0;
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.partner-logo {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.4s var(--ease);
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease);
+}
+
+.partner-logo:hover {
+  opacity: 1;
+  color: var(--text-medium);
+}
+
+@media (max-width: 768px) {
+  .partners-row { gap: 24px 32px; }
+  .partner-logo { font-size: 14px; }
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq {
+  background: linear-gradient(180deg, var(--deep-1) 0%, var(--deep-2) 100%);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(0, 168, 232, 0.08);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(0, 168, 232, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-bright);
+  transition: color 0.3s var(--ease);
+}
+
+.faq-question:hover {
+  color: var(--pool-light);
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+  color: var(--pool);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease);
+}
+
+.faq-icon::before {
+  width: 14px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+  width: 2px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-item.active .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
+}
+
+.faq-answer-inner {
+  padding: 0 0 24px;
+  font-size: 15px;
+  color: var(--text-medium);
+  line-height: 1.8;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+.cta-section {
+  background: var(--deep-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 80px 24px;
+}
+
+.cta-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cta-glow::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(0, 168, 232, 0.1) 0%, transparent 70%);
+  animation: ctaGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes ctaGlow {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+.cta-section .section-title {
+  margin-bottom: 12px;
+}
+
+.cta-section .section-subtitle {
+  margin-bottom: 36px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--deep-5);
+  border-top: 1px solid rgba(0, 168, 232, 0.06);
+  padding: 64px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+@media (max-width: 540px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+}
+
+.footer-legal {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer-col a:hover {
+  color: var(--pool-light);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer-contact-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--pool);
+  flex-shrink: 0;
+}
+
+.footer-contact-item a {
+  color: var(--text-medium);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.3s var(--ease);
+}
+
+.footer-social a:hover {
+  background: var(--pool-pale);
+  color: var(--pool);
+}
+
+.footer-social svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================================
+   ANIMATIONS (IntersectionObserver fade-in)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Stagger children */
+.stagger > .reveal:nth-child(1) { transition-delay: 0.05s; }
+.stagger > .reveal:nth-child(2) { transition-delay: 0.15s; }
+.stagger > .reveal:nth-child(3) { transition-delay: 0.25s; }
+.stagger > .reveal:nth-child(4) { transition-delay: 0.35s; }
+
+/* Hero specific entrance */
+.hero-enter {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroEnter 1s var(--ease-out) forwards;
+}
+
+.hero-enter-1 { animation-delay: 0.2s; }
+.hero-enter-2 { animation-delay: 0.4s; }
+.hero-enter-3 { animation-delay: 0.6s; }
+.hero-enter-4 { animation-delay: 0.8s; }
+
+@keyframes heroEnter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero { min-height: 90vh; padding: 100px 20px 60px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .btn { width: 100%; justify-content: center; }
+  .scroll-indicator { display: none; }
+  .section-header { margin-bottom: 40px; }
+  .section-tag::before, .section-tag::after { width: 16px; }
+}
+
+/* ============================================================
+   DEMO RIBBON
+   ============================================================ */
+.demo-ribbon {
+  position: fixed;
+  top: 20px;
+  left: -45px;
+  z-index: 10000;
+  background: linear-gradient(135deg, #00A8E8, #40C4FF);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SERVICE CARD IMAGES
+   ============================================================ */
+.service-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   REALISATION CARD IMAGES
+   ============================================================ */
+.real-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
+   PARTNER LOGO IMAGES
+   ============================================================ */
+.partner-logo-img {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease);
+}
+.partner-logo-img:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   FOOTER LOGO
+   ============================================================ */
+.footer-brand img {
+  height: 40px;
+  width: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Demo Ribbon -->
+<div class="demo-ribbon">Theme 1<br>Premium Dark Pool<br>D&eacute;monstration</div>
+
+<!-- Ambient water background -->
+<div class="water-bg"></div>
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#realisations">R&eacute;alisations</a></li>
+        <li><a href="#temoignages">Avis</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="service-membrane.html">Membrane arm&eacute;e</a></li>
+        <li><a href="#contact" class="nav-cta">Diagnostic gratuit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-water">
+      <div class="hero-caustics">
+        <div class="caustic-shape c1"></div>
+        <div class="caustic-shape c2"></div>
+        <div class="caustic-shape c3"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge hero-enter hero-enter-1">
+        <span class="hero-badge-dot"></span>
+        Artisan pisciniste &mdash; Alpes-Maritimes (06)
+      </div>
+
+      <h1 class="hero-enter hero-enter-2">
+        Expert en <em>R&eacute;novation</em> et Solutions d&rsquo;&eacute;tanch&eacute;it&eacute; pour votre piscine
+      </h1>
+
+      <p class="hero-subtitle hero-enter hero-enter-3">
+        Membrane arm&eacute;e, liner, cuvelage souple &mdash; des solutions durables et esth&eacute;tiques pour redonner vie &agrave; votre bassin sur toute la C&ocirc;te d&rsquo;Azur.
+      </p>
+
+      <div class="hero-actions hero-enter hero-enter-4">
+        <a href="#contact" class="btn btn--primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Demander un diagnostic gratuit
+        </a>
+        <a href="#realisations" class="btn btn--outline">
+          Voir nos r&eacute;alisations
+        </a>
+      </div>
+
+      <div class="hero-phone hero-enter hero-enter-4">
+        <svg class="hero-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        Appelez-nous : <a href="tel:0674385978">06 74 38 59 78</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>D&eacute;couvrir</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section class="services section-pad" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Nos expertises</span>
+        <h2 class="section-title">Trois solutions d&rsquo;&eacute;tanch&eacute;it&eacute; &eacute;prouv&eacute;es</h2>
+        <p class="section-subtitle">Chaque piscine est unique. Nous s&eacute;lectionnons la technique la plus adapt&eacute;e &agrave; votre bassin, votre budget et vos envies.</p>
+      </div>
+
+      <div class="services-grid stagger">
+        <!-- Membrane armée -->
+        <div class="service-card reveal">
+          <img src="../assets/images/membrane.webp" alt="Membrane arm&eacute;e" class="service-card-img">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Membrane arm&eacute;e</h3>
+          <p>Solution ultra-r&eacute;sistante, &eacute;paisseur 150&ndash;200 centi&egrave;mes, soudure fer air chaud norme T54-804. La r&eacute;f&eacute;rence pour les r&eacute;novations haut de gamme.</p>
+          <span class="service-tag">Garantie 10 ans</span>
+        </div>
+
+        <!-- Liner -->
+        <div class="service-card reveal">
+          <img src="../assets/images/OZIMEK-min.webp" alt="Liner" class="service-card-img">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 3v18"/>
+            </svg>
+          </div>
+          <h3>Liner</h3>
+          <p>Solution populaire, &eacute;paisseur 75&ndash;100 centi&egrave;mes, large gamme de couleurs et motifs. R&eacute;parable sans vidanger votre bassin.</p>
+          <span class="service-tag">Sur mesure</span>
+        </div>
+
+        <!-- Cuvelage souple -->
+        <div class="service-card reveal">
+          <img src="../assets/images/piscinetest.webp" alt="Cuvelage souple" class="service-card-img">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Cuvelage souple</h3>
+          <p>R&eacute;sine polyur&eacute;thane bi-composants, approbation CSTB/VERITAS. Tol&eacute;rance fissuration 5mm, id&eacute;ale pour bassins b&eacute;ton fissur&eacute;s.</p>
+          <span class="service-tag">CSTB/VERITAS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-sep">
+
+  <!-- ============================================================
+       REALISATIONS
+       ============================================================ -->
+  <section class="realisations section-pad" id="realisations">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Nos r&eacute;alisations r&eacute;centes</h2>
+        <p class="section-subtitle">Chaque projet est r&eacute;alis&eacute; avec la pr&eacute;cision et le soin d&rsquo;un artisan passionn&eacute;.</p>
+      </div>
+
+      <div class="real-grid stagger">
+        <!-- Menton -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_7364.webp" alt="R&eacute;alisation piscine Menton" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Menton</span>
+            <h3 class="real-title">R&eacute;novation piscine carrel&eacute;e</h3>
+            <p class="real-desc">Membrane 3D Touch Prestige Renolit &mdash; finition haut de gamme texture pierre naturelle</p>
+          </div>
+        </div>
+
+        <!-- Grasse -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_6129.webp" alt="R&eacute;alisation piscine Grasse" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Grasse</span>
+            <h3 class="real-title">Couloir de nage 13&times;3.5m</h3>
+            <p class="real-desc">Construction compl&egrave;te avec membrane arm&eacute;e haute r&eacute;sistance</p>
+          </div>
+        </div>
+
+        <!-- Biot -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_4653.webp" alt="R&eacute;alisation piscine Biot" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Biot</span>
+            <h3 class="real-title">R&eacute;novation Waterair</h3>
+            <p class="real-desc">Escalier pleine largeur &mdash; transformation compl&egrave;te du bassin existant</p>
+          </div>
+        </div>
+
+        <!-- Antibes -->
+        <div class="real-card reveal">
+          <img src="../assets/images/IMG_5289.webp" alt="R&eacute;alisation piscine Antibes" class="real-card-bg">
+          <div class="real-overlay">
+            <span class="real-location">Antibes</span>
+            <h3 class="real-title">Forme &laquo;&thinsp;Pointe Diamant&thinsp;&raquo;</h3>
+            <p class="real-desc">Membrane arm&eacute;e con&ccedil;ue pour durer plus de 20 ans &mdash; design g&eacute;om&eacute;trique unique</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-sep">
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="testimonials section-pad" id="temoignages">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">T&eacute;moignages</span>
+        <h2 class="section-title">Ce que disent nos clients</h2>
+        <p class="section-subtitle">La satisfaction de nos clients est notre meilleure vitrine.</p>
+      </div>
+
+      <div class="testi-grid stagger">
+        <!-- Emmanuel -->
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-quote">&laquo;&thinsp;Un service cinq &eacute;toiles, une grande r&eacute;activit&eacute;. Le r&eacute;sultat d&eacute;passe nos attentes, notre piscine a retrouv&eacute; une seconde jeunesse.&thinsp;&raquo;</p>
+          <div class="testi-author">Emmanuel dePlace</div>
+          <div class="testi-source">Avis Google</div>
+        </div>
+
+        <!-- Robin -->
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-quote">&laquo;&thinsp;Un professionnel comme il en reste peu. Travail impeccable, dans les d&eacute;lais, et toujours de bon conseil. Je recommande sans h&eacute;siter.&thinsp;&raquo;</p>
+          <div class="testi-author">Robin Chabrand</div>
+          <div class="testi-source">Avis Google</div>
+        </div>
+
+        <!-- Nicolas -->
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-quote">&laquo;&thinsp;Un chef d&rsquo;entreprise chaleureux et comp&eacute;tent. La r&eacute;novation de notre piscine a &eacute;t&eacute; g&eacute;r&eacute;e de A &agrave; Z avec un vrai professionnalisme.&thinsp;&raquo;</p>
+          <div class="testi-author">Nicolas Lautard</div>
+          <div class="testi-source">Avis Google</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PARTNERS
+       ============================================================ -->
+  <section class="partners" id="partenaires">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom: 40px;">
+        <span class="section-tag">Nos partenaires</span>
+      </div>
+      <div class="partners-row reveal">
+        <img src="../assets/images/renolit.webp" alt="Renolit" class="partner-logo-img">
+        <img src="../assets/images/soprema.webp" alt="Soprema" class="partner-logo-img">
+        <img src="../assets/images/cgt.webp" alt="CGT Alkor" class="partner-logo-img">
+        <img src="../assets/images/proflex.webp" alt="Proflex" class="partner-logo-img">
+        <img src="../assets/images/logo-verde.png" alt="DLW Delifol" class="partner-logo-img">
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-sep">
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section class="faq section-pad" id="faq">
+    <div class="container container--narrow">
+      <div class="section-header reveal">
+        <span class="section-tag">Questions fr&eacute;quentes</span>
+        <h2 class="section-title">Tout ce que vous devez savoir</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quels sont les avantages de la membrane arm&eacute;e par rapport au liner&thinsp;?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              La membrane arm&eacute;e est plus &eacute;paisse (150&ndash;200 centi&egrave;mes contre 75&ndash;100 pour le liner), renforc&eacute;e par une trame polyester qui lui conf&egrave;re une r&eacute;sistance sup&eacute;rieure aux d&eacute;chirures et aux UV. Elle est soud&eacute;e sur place pour &eacute;pouser parfaitement la forme de votre bassin, et sa dur&eacute;e de vie d&eacute;passe g&eacute;n&eacute;ralement 15&ndash;20 ans avec un entretien adapt&eacute;.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Combien de temps dure une r&eacute;novation de piscine&thinsp;?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              La dur&eacute;e d&eacute;pend du type de travaux et de la taille du bassin. Pour une pose de membrane arm&eacute;e, comptez g&eacute;n&eacute;ralement entre 5 et 10 jours ouvr&eacute;s. Un remplacement de liner prend entre 2 et 5 jours. Nous &eacute;tablissons un calendrier pr&eacute;cis lors du diagnostic initial.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quels types de piscines pouvez-vous r&eacute;nover&thinsp;?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Nous intervenons sur tous les types de bassins : piscines b&eacute;ton (traditionnelles, projet&eacute;es, moul&eacute;es), coques polyester, piscines en kit (Waterair, Desjoyaux, etc.), bassins carrel&eacute;s, et piscines &agrave; d&eacute;bordement. Quelle que soit la forme ou la taille, nous trouvons la solution adapt&eacute;e.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Pouvez-vous traiter les fuites et probl&egrave;mes structurels&thinsp;?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Oui, c&rsquo;est m&ecirc;me notre sp&eacute;cialit&eacute;. Nous commen&ccedil;ons par un diagnostic pr&eacute;cis pour localiser l&rsquo;origine de la fuite. Selon le cas, nous pouvons traiter les fissures par cuvelage souple (r&eacute;sine polyur&eacute;thane tol&eacute;rant jusqu&rsquo;&agrave; 5mm de fissuration) ou poser une membrane arm&eacute;e qui assure une &eacute;tanch&eacute;it&eacute; totale ind&eacute;pendante de la structure.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quel entretien pour une membrane arm&eacute;e&thinsp;?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              La membrane arm&eacute;e demande peu d&rsquo;entretien sp&eacute;cifique. Un traitement de l&rsquo;eau &eacute;quilibr&eacute; (pH entre 7.0 et 7.4), un nettoyage r&eacute;gulier au balai ou robot, et un hivernage correct suffisent &agrave; maintenir ses propri&eacute;t&eacute;s pendant toute sa dur&eacute;e de vie. Nous fournissons un guide d&rsquo;entretien d&eacute;taill&eacute; apr&egrave;s chaque intervention.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA SECTION
+       ============================================================ -->
+  <section class="cta-section" id="contact">
+    <div class="cta-glow"></div>
+    <div class="cta-inner reveal">
+      <span class="section-tag">Passez &agrave; l&rsquo;action</span>
+      <h2 class="section-title">Optimisez l&rsquo;&eacute;tanch&eacute;it&eacute; de votre piscine</h2>
+      <p class="section-subtitle" style="margin: 0 auto 36px;">
+        B&eacute;n&eacute;ficiez d&rsquo;un diagnostic gratuit et sans engagement par un expert de l&rsquo;&eacute;tanch&eacute;it&eacute; piscine.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:0674385978" class="btn btn--primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          06 74 38 59 78
+        </a>
+        <a href="mailto:contact@lafrenchpiscine.fr" class="btn btn--sand">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 7l-10 7L2 7"/>
+          </svg>
+          Diagnostic gratuit
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><img src="../assets/images/logo.webp" alt="La French Piscine" style="height:40px;width:auto;"></div>
+          <p class="footer-legal">
+            CARDI PISCINES<br>
+            SIRET 89153972800016<br>
+            Expert en r&eacute;novation et &eacute;tanch&eacute;it&eacute; piscine
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="service-membrane.html">Membrane arm&eacute;e</a></li>
+            <li><a href="#">Liner</a></li>
+            <li><a href="#">Cuvelage souple</a></li>
+            <li><a href="#">Diagnostic</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#realisations">R&eacute;alisations</a></li>
+            <li><a href="#temoignages">T&eacute;moignages</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <a href="tel:0674385978">06 74 38 59 78</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M22 7l-10 7L2 7"/>
+            </svg>
+            <a href="mailto:contact@lafrenchpiscine.fr">contact@lafrenchpiscine.fr</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Alpes-Maritimes (06)
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 La French Piscine &mdash; Tous droits r&eacute;serv&eacute;s</span>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/lafrenchpiscine" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<!-- end content-wrapper -->
+
+<script>
+/* ============================================================
+   LA FRENCH PISCINE — JavaScript
+   ============================================================ */
+
+// IntersectionObserver for reveal animations
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // Nav scroll behavior
+  const nav = document.getElementById('nav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close mobile nav on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isActive = item.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      // Open clicked if it was closed
+      if (!isActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Parallax-like effect on hero caustics
+  window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const heroHeight = hero.offsetHeight;
+
+    if (scrollY < heroHeight) {
+      const caustics = document.querySelector('.hero-caustics');
+      if (caustics) {
+        caustics.style.transform = `translateY(${scrollY * 0.15}px)`;
+      }
+    }
+  }, { passive: true });
+
+});
+</script>
+</body>
+</html>

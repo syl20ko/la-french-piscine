@@ -179,24 +179,25 @@ h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,36px);font-weight:400;mar
 .cta-button:active{transform:scale(.98)}
 .cta-sub{font-size:13px;color:var(--slate-light);margin-top:12px !important}
 
-/* PILLARS */
-.pillars-section{background:var(--white);padding:72px 0}
-.pillars-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:48px}
-.pillar-card{border-radius:16px;padding:36px 32px;position:relative;overflow:hidden}
-.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
-.pillar-affaires{background:linear-gradient(135deg,#E8F4FB 0%,#F0F9FF 100%)}.pillar-affaires::before{background:var(--pool)}
-.pillar-notoriete{background:linear-gradient(135deg,#F5F0EB 0%,#FAF7F3 100%)}.pillar-notoriete::before{background:var(--sand)}
-.pillar-perennite{background:linear-gradient(135deg,#ECFDF5 0%,#F0FDF4 100%)}.pillar-perennite::before{background:var(--green)}
-.pillar-number{font-family:var(--serif);font-size:56px;line-height:1;font-weight:400;margin-bottom:4px}
-.pillar-affaires .pillar-number{color:var(--pool)}
-.pillar-notoriete .pillar-number{color:var(--sand)}
-.pillar-perennite .pillar-number{color:var(--green)}
-.pillar-label{font-family:var(--serif);font-size:clamp(24px,3vw,32px);color:var(--deep);margin-bottom:6px;letter-spacing:-.02em}
-.pillar-subtitle{font-size:15px;color:var(--slate);margin-bottom:24px;line-height:1.5;max-width:600px}
-.pillar-items{list-style:none;padding:0;margin:0;display:grid;gap:16px}
-.pillar-items li{display:grid;gap:4px}
-.pillar-items strong{font-size:15px;color:var(--deep)}
-.pillar-items span{font-size:14px;color:var(--slate-light);line-height:1.55}
+/* TRANSFORMATION */
+.transform-section{background:var(--white);padding:72px 0}
+.transform-grid{display:grid;gap:0;margin-bottom:48px;border-radius:16px;overflow:hidden;border:1px solid #E2E8F0}
+.transform-header{display:grid;grid-template-columns:1fr 1fr;background:var(--deep)}
+.transform-header-cell{padding:16px 28px;font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:.02em}
+.transform-header-cell.before{color:rgba(255,255,255,.5)}
+.transform-header-cell.after{color:var(--pool-light)}
+.transform-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #F0F0F0;transition:background .15s}
+.transform-row:last-child{border-bottom:none}
+.transform-row:hover{background:#FAFBFC}
+.transform-cell{padding:18px 28px;font-size:14px;line-height:1.55}
+.transform-cell.before{color:var(--slate-light);position:relative}
+.transform-cell.before::before{content:'';position:absolute;left:0;top:18px;bottom:18px;width:3px;background:var(--red);opacity:.3;border-radius:0 2px 2px 0}
+.transform-cell.after{color:var(--deep)}
+.transform-cell.after strong{color:var(--pool-dark);font-weight:600}
+.transform-cell .t-title{font-weight:600;margin-bottom:2px}
+.transform-cell .t-detail{font-size:13px;color:var(--slate-light);line-height:1.5}
+.transform-cell.after .t-detail{color:var(--slate)}
+.transform-arrow{display:none}
 .price-block{background:var(--deep);border-radius:16px;padding:40px 36px;display:grid;gap:20px}
 .price-main{text-align:center}
 .price-amount{font-family:var(--serif);font-size:clamp(48px,8vw,64px);color:var(--pool-light);line-height:1;margin-bottom:8px;letter-spacing:-.03em}
@@ -223,7 +224,14 @@ footer p{margin-bottom:4px}
   .insight-box{flex-direction:column;gap:12px}
   .login-card{padding:36px 28px}
   .roi-box{padding:36px 24px}
-  .pillar-card{padding:28px 22px}
+  .transform-header{grid-template-columns:1fr}
+  .transform-header-cell.before{display:none}
+  .transform-row{grid-template-columns:1fr;gap:0}
+  .transform-cell{padding:14px 20px}
+  .transform-cell.before{background:#FEF2F2;border-bottom:none;padding-bottom:10px}
+  .transform-cell.before::before{display:none}
+  .transform-cell.after{padding-top:10px;border-bottom:1px solid #F0F0F0}
+  .transform-arrow{display:block;text-align:center;font-size:16px;color:var(--pool);padding:2px 0;background:var(--white)}
   .price-block{padding:32px 22px}
   .price-option{flex-direction:column;align-items:flex-start;gap:10px}
 }
@@ -666,101 +674,161 @@ footer p{margin-bottom:4px}
   </div>
 </section>
 
-<!-- ===================== CE QUE JE CONSTRUIS POUR VOUS ===================== -->
-<section class="pillars-section">
+<!-- ===================== TRANSFORMATION ===================== -->
+<section class="transform-section">
   <div class="container">
-    <h2>Ce que je construis pour vous</h2>
-    <p class="section-intro">Chaque élément de la refonte sert un de vos trois objectifs. Pas de décoration — que du concret.</p>
+    <h2>Votre site aujourd'hui vs. demain</h2>
+    <p class="section-intro">Chaque ligne est un problème identifié dans l'audit — et sa solution concrète.</p>
 
-    <div class="pillars-grid">
-
-      <!-- PILIER 1 — AFFAIRES -->
-      <div class="pillar-card pillar-affaires">
-        <div class="pillar-number">1</div>
-        <div class="pillar-label">Affaires</div>
-        <div class="pillar-subtitle">Générer des leads en dehors de Google Ads</div>
-        <ul class="pillar-items">
-          <li>
-            <strong>Formulaire intelligent</strong>
-            <span>Le prospect choisit son projet, indique son urgence. Vous recevez des demandes qualifiées — pas des messages vagues.</span>
-          </li>
-          <li>
-            <strong>Tracking GA4 complet</strong>
-            <span>D'où viennent vos contacts, quel canal convertit le mieux, où mettre votre argent. Fini l'angle mort.</span>
-          </li>
-          <li>
-            <strong>Articles SEO issus de vos données Ads</strong>
-            <span>Les requêtes qui génèrent déjà des clics payants deviennent des pages organiques. Trafic gratuit dès la livraison.</span>
-          </li>
-        </ul>
+    <div class="transform-grid">
+      <div class="transform-header">
+        <div class="transform-header-cell before">Aujourd'hui</div>
+        <div class="transform-header-cell after">Demain</div>
       </div>
 
-      <!-- PILIER 2 — NOTORIÉTÉ -->
-      <div class="pillar-card pillar-notoriete">
-        <div class="pillar-number">2</div>
-        <div class="pillar-label">Notoriété</div>
-        <div class="pillar-subtitle">Être visible sur Google, dans les IA, et dans la tête de vos prospects</div>
-        <ul class="pillar-items">
-          <li>
-            <strong>Site professionnel premium</strong>
-            <span>Fini IONOS. Un site rapide et responsive qui reflète votre positionnement haut de gamme.</span>
-          </li>
-          <li>
-            <strong>6 pages services optimisées SEO</strong>
-            <span>Membrane, Liner, Cuvelage, Fuites, Dépannage, Accessoires — chacune est une porte d'entrée Google.</span>
-          </li>
-          <li>
-            <strong>8 réalisations géolocalisées</strong>
-            <span>"Rénovation piscine Menton", "membrane armée Grasse" — chaque chantier capte les recherches de sa ville.</span>
-          </li>
-          <li>
-            <strong>Page zone d'intervention</strong>
-            <span>Carte interactive 06 + 83. Google vous positionne sur chaque ville que vous couvrez.</span>
-          </li>
-          <li>
-            <strong>Page Alexandre Cardi</strong>
-            <span>Votre parcours, vos valeurs, votre méthode. Dans l'artisanat, c'est la confiance personnelle qui déclenche l'appel.</span>
-          </li>
-          <li>
-            <strong>Témoignages & labels visibles</strong>
-            <span>3 avis clients, logos Renolit / DLW / CSTB / VERITAS, garantie décennale — tout ce qui rassure, enfin sur le site.</span>
-          </li>
-        </ul>
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Builder IONOS bridé</div>
+          <div class="t-detail">Pas d'accès au code, pas de SEO, pas de blog, design daté</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title">Site professionnel <strong>premium</strong></div>
+          <div class="t-detail">Rapide, responsive, design haut de gamme qui reflète votre positionnement artisan</div>
+        </div>
       </div>
 
-      <!-- PILIER 3 — PÉRENNITÉ -->
-      <div class="pillar-card pillar-perennite">
-        <div class="pillar-number">3</div>
-        <div class="pillar-label">Pérennité</div>
-        <div class="pillar-subtitle">Construire un actif digital qui prend de la valeur chaque mois</div>
-        <ul class="pillar-items">
-          <li>
-            <strong>FAQ enrichie + schema markup</strong>
-            <span>Résultats enrichis sur Google, visibilité dans les IA (ChatGPT, Perplexity) qui citent les experts locaux.</span>
-          </li>
-          <li>
-            <strong>Mentions légales conformes</strong>
-            <span>Zéro risque juridique. Adresse, responsable, hébergeur, RGPD — tout est en ordre.</span>
-          </li>
-          <li>
-            <strong>Option : 2 articles SEO / mois</strong>
-            <span>Chaque article cible une requête Ads et se positionne. En 12 mois, 24 pages qui travaillent 24h/24 — votre dépendance au budget pub diminue mois après mois.</span>
-          </li>
-        </ul>
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Invisible sur Google</div>
+          <div class="t-detail">0 meta description, 0 schema markup, URLs cassées</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>6 pages services</strong> optimisées SEO</div>
+          <div class="t-detail">Membrane, Liner, Cuvelage, Fuites, Dépannage, Accessoires — chacune est une porte d'entrée Google</div>
+        </div>
       </div>
 
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">8 chantiers documentés mais cachés</div>
+          <div class="t-detail">Noyés dans un builder qui ne les indexe pas</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>8 réalisations géolocalisées</strong></div>
+          <div class="t-detail">"Rénovation piscine Menton", "membrane armée Grasse" — chaque chantier capte les recherches de sa ville</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Aucune preuve sociale visible</div>
+          <div class="t-detail">3 témoignages, 5 partenaires premium — uniquement sur vos landing pages Ads</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title">Témoignages, <strong>labels et partenaires</strong> en vitrine</div>
+          <div class="t-detail">Renolit, DLW, CSTB/VERITAS, garantie décennale, avis Google — tout ce qui rassure, enfin visible</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Alexandre Cardi invisible</div>
+          <div class="t-detail">Pas de photo, pas d'histoire, pas de parcours sur le site</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title">Page <strong>À propos</strong> — votre meilleur argument</div>
+          <div class="t-detail">Votre parcours, vos valeurs, votre méthode. La confiance personnelle qui déclenche l'appel</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Pas de zone d'intervention</div>
+          <div class="t-detail">Les prospects ne savent pas si vous intervenez chez eux</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>Carte interactive</strong> 06 + 83</div>
+          <div class="t-detail">Google vous positionne sur chaque ville que vous couvrez — Nice, Cannes, Grasse, Mougins…</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Formulaire basique</div>
+          <div class="t-detail">Nom, email, message libre — pas de qualification, pas de tracking</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>Formulaire intelligent</strong> + conversion trackée</div>
+          <div class="t-detail">Type de projet, budget, urgence. Vous recevez des demandes qualifiées et savez d'où elles viennent</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Aucun analytics</div>
+          <div class="t-detail">Impossible de savoir combien visitent, d'où, ni ce qui fonctionne</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>GA4 complet</strong> — chaque contact mesuré</div>
+          <div class="t-detail">Formulaires, clics téléphone, pages vues. Vous saurez quel canal rapporte et où investir</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Pas de FAQ, pas de rich snippets</div>
+          <div class="t-detail">0 résultat enrichi, invisible dans les IA</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>FAQ enrichie</strong> + résultats Google</div>
+          <div class="t-detail">Schema markup FAQ — vous apparaissez en résultats enrichis et dans ChatGPT / Perplexity</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">Mentions légales incomplètes</div>
+          <div class="t-detail">Pas d'adresse, pas de responsable, dernière MAJ 2023</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>Conformité totale</strong></div>
+          <div class="t-detail">Adresse, responsable légal, hébergeur, RGPD — zéro risque juridique</div>
+        </div>
+      </div>
+
+      <div class="transform-row">
+        <div class="transform-cell before">
+          <div class="t-title">0 contenu SEO</div>
+          <div class="t-detail">2 articles de démo IONOS de 2017 encore indexés</div>
+        </div>
+        <div class="transform-arrow">&#8595;</div>
+        <div class="transform-cell after">
+          <div class="t-title"><strong>Articles SEO</strong> issus de vos données Ads</div>
+          <div class="t-detail">Les requêtes qui génèrent des clics payants deviennent des pages organiques — trafic gratuit dès la livraison</div>
+        </div>
+      </div>
     </div>
 
     <!-- PRIX -->
     <div class="price-block">
       <div class="price-main">
         <div class="price-amount">2 500 <span>€ HT</span></div>
-        <div class="price-label">Forfait unique — Tout ce qui est décrit ci-dessus, livré clé en main.</div>
+        <div class="price-label">Forfait unique — tout ce qui est décrit ci-dessus, livré clé en main.</div>
       </div>
       <div class="price-option">
         <span class="price-option-badge">+</span>
         <div>
-          <strong>99 € HT / mois</strong> — 2 articles SEO mensuels pour accélérer la croissance organique.
+          <strong>99 € HT / mois</strong> — 2 articles SEO mensuels qui ciblent vos requêtes Ads et se positionnent sur Google. En 12 mois, 24 pages qui travaillent pour vous 24h/24.
         </div>
       </div>
     </div>

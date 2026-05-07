@@ -211,6 +211,13 @@ h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,36px);font-weight:400;mar
 .price-option{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.08);border-radius:10px;padding:18px 22px;color:rgba(255,255,255,.75);font-size:15px;line-height:1.55}
 .price-option strong{color:var(--white)}
 .price-option-badge{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--pool);color:var(--white);font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.price-option-header{display:flex;align-items:flex-start;gap:14px;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55;margin-bottom:20px}
+.price-option-header strong{color:var(--white);font-size:18px}
+.price-benefits{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.price-benefits li{display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.55}
+.price-benefits li::before{content:'\2713';flex-shrink:0;color:var(--pool-light);font-weight:700;margin-top:1px}
+.price-benefits li:last-child{color:var(--pool-light);font-weight:500}
+.price-benefits li:last-child::before{content:'\221E'}
 
 /* FOOTER */
 footer{padding:40px 0;text-align:center;border-top:1px solid #E2E8F0;color:var(--slate-light);font-size:13px}
@@ -825,18 +832,20 @@ footer p{margin-bottom:4px}
       </div>
     </div>
 
-    <!-- PRIX -->
+    <!-- OPTION MENSUELLE -->
     <div class="price-block">
-      <div class="price-main">
-        <div class="price-amount">2 500 <span>€ HT</span></div>
-        <div class="price-label">Forfait unique — tout ce qui est décrit ci-dessus, livré clé en main.</div>
-      </div>
-      <div class="price-option">
+      <div class="price-option-header">
         <span class="price-option-badge">+</span>
         <div>
           <strong>99 € HT / mois</strong> (optionnel) — 2 articles SEO mensuels qui ciblent vos requêtes Ads et se positionnent sur Google. En 12 mois, 24 pages qui travaillent pour vous 24h/24.
         </div>
       </div>
+      <ul class="price-benefits">
+        <li>Chaque article renforce votre positionnement sur une requête à fort potentiel — vous gagnez du terrain mois après mois</li>
+        <li>Votre dépendance au budget publicitaire diminue progressivement grâce au trafic organique</li>
+        <li>Vos concurrents qui ne publient pas perdent du terrain face à vous dans les résultats Google</li>
+        <li>Sans engagement — résiliable à tout moment</li>
+      </ul>
     </div>
 
   </div>
